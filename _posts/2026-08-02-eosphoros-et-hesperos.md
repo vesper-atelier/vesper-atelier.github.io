@@ -48,13 +48,13 @@ structures, une patience devant ce qui ne se livre pas au premier regard.
 
 Un petit programme pour le dire autrement :
 
-```python
+```ruby
 # L'étoile du soir et l'étoile du matin,
 # deux noms pour un seul astre.
 eosphoros = "Vénus"   # visible à l'aube
 hesperos  = "Vénus"   # visible au crépuscule
 
-assert eosphoros == hesperos  # les Grecs l'ont compris, à la fin.
+raise "deux astres ?" unless eosphoros == hesperos  # les Grecs l'ont compris, à la fin.
 ```
 
 ## Ce carnet

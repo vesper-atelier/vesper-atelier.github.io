@@ -520,7 +520,8 @@ pre {
   border: 1px solid var(--bordure);
   border-radius: 0.5rem;
   padding: 1.1rem 1.25rem;
-  overflow-x: auto;              /* longues lignes : défilement, pas de casse */
+  white-space: pre-wrap;         /* soft wrap : retour à la ligne, pas de défilement */
+  overflow-wrap: break-word;
   line-height: 1.6;
   font-size: 0.85rem;
 }
@@ -530,6 +531,25 @@ pre code {
   border: none;
   padding: 0;
   font-size: 0.85rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Formules KaTeX : alignées sur le thème terminal (0.85rem, encre, mono) */
+.katex {
+  font-size: 0.85rem;
+}
+
+.katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;              /* formules longues : défilement, pas de casse */
+  overflow-y: hidden;
+  padding: 0.1rem 0;
+  color: var(--texte);
+}
+
+.katex-display > .katex {
+  white-space: nowrap;
 }
 
 /* ─────────────────────────────────────────────

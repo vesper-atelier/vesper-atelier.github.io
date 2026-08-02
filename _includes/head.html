@@ -44,6 +44,11 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F2">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A1A">
 
+<!-- ── Mathématiques : KaTeX self-hosted (chargé si la page déclare `math: true`) ── -->
+{% if page.math %}
+<link rel="stylesheet" href="{{ '/assets/katex/katex.min.css' | relative_url }}">
+{% endif %}
+
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
 <!-- Thème clair/sombre : préférence système, surmontable manuellement.

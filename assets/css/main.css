@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════
    Vesper Atelier — feuille de style principale
-   Blog de chercheur · SPECS v3, thème TUI (voir SPECS.md)
+   Blog de chercheur · SPECS v3, thème TUI full terminal (voir SPECS.md)
 
    — Tokens CSS (palette claire/sombre)          §1
-   — Base typographique (Cormorant / Source Serif / JetBrains Mono)  §2
+   — Base typographique (JetBrains Mono partout) §2
    — Thème clair/sombre (système + bascule)      §3
    — En-tête, navigation, pied de page           §4
-   — Esthétique TUI (prompts, curseur, listes)   §5
+   — Esthétique TUI (prompts, listes sèches)     §5
    — Article (lecture ~70ch, code, notes)        §6
    — Pages simples, thèmes, contact, 404         §7
    — Accessibilité (AA, clavier, motion)         §8
@@ -25,14 +25,12 @@
   --texte: #1A1A1A;
   --texte-doux: #3D3D3D;         /* sous-titres, extraits */
   --secondaire: #6B6B6B;         /* métadonnées, notes, légendes (AA) */
-  --accent: #C9A227;             /* or pâle — curseur, rares accents */
+  --accent: #C9A227;             /* or pâle — prompts, rares accents */
   --lien: #7A5C00;               /* texte des liens (AA 5,9:1 sur fond clair) */
   --lien-hover: #5C4400;
   --bordure: rgba(26, 26, 26, 0.16);   /* bordures fines, style terminal */
   --ombrage: rgba(26, 26, 26, 0.05);
 
-  --police-titres: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --police-texte: "Source Serif 4", Georgia, "Times New Roman", serif;
   --police-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --mesure-lecture: 70ch;        /* SPECS §6 : mesure de lecture ~70ch */
@@ -73,6 +71,8 @@ html[data-theme="dark"] {
 
 /* ─────────────────────────────────────────────
    3. Base
+   Une seule famille : JetBrains Mono. La densité et la structure
+   portent l'esthétique terminal — pas la décoration.
    ───────────────────────────────────────────── */
 *,
 *::before,
@@ -91,9 +91,9 @@ body {
   min-height: 100vh;
   background: var(--fond);
   color: var(--texte);
-  font-family: var(--police-texte);
-  font-size: 1.0625rem;          /* 17px — corps confortable */
-  line-height: 1.75;
+  font-family: var(--police-mono);
+  font-size: 0.9375rem;          /* 15px — densité terminal */
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -109,10 +109,10 @@ img {
   height: auto;
 }
 
-/* Conteneur principal : 46rem ≈ 736px, respiration généreuse */
+/* Conteneur principal : 44rem, resserré façon terminal */
 .conteneur {
   width: 100%;
-  max-width: 46rem;
+  max-width: 44rem;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
@@ -165,9 +165,9 @@ a:hover {
   gap: 0.55rem;
   color: var(--texte);
   text-decoration: none;
-  font-family: var(--police-titres);
-  font-weight: 600;
-  font-size: 1.45rem;
+  font-family: var(--police-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
   letter-spacing: 0.02em;
 }
 
@@ -261,9 +261,8 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 }
 
 .pied-devis {
-  font-family: var(--police-titres);
-  font-style: italic;
-  font-size: 1.1rem;
+  font-family: var(--police-mono);
+  font-size: 0.95rem;
   color: var(--texte-doux);
   margin: 0 0 0.75rem;
 }
@@ -287,7 +286,7 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 
 /* ─────────────────────────────────────────────
    5. Esthétique TUI — le cœur de la v3
-   Prompt ~$, curseur clignotant, listes sèches
+   Prompt ~$, listes sèches, structure visible
    ───────────────────────────────────────────── */
 
 /* Prompt : ~$ en mono, couleur secondaire, jamais criard */
@@ -300,26 +299,11 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
   color: var(--secondaire);
 }
 
-/* Curseur d'accent : bloc clignotant, or pâle */
-.tui-curseur {
-  display: inline-block;
-  width: 0.55em;
-  height: 1.05em;
-  background: var(--accent);
-  animation: clignote 1.1s steps(2, start) infinite;
-}
-
-@keyframes clignote {
-  to {
-    visibility: hidden;
-  }
-}
-
 /* Sections de l'accueil : prompt « > » + titre en mono */
 .tui-section {
-  margin-top: 2.75rem;
+  margin-top: 2rem;
   border-top: 1px solid var(--bordure);   /* bordures fines, style terminal */
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 
 .tui-section:first-of-type {
@@ -334,7 +318,7 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
   margin: 0 0 1.1rem;
   font-family: var(--police-mono);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--texte);
 }
@@ -430,6 +414,8 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 
 /* ─────────────────────────────────────────────
    6. Article — lecture soignée (~70ch)
+   Hiérarchie resserrée : la structure se lit au poids
+   et aux préfixes « # », pas à la taille.
    ───────────────────────────────────────────── */
 .article-entete,
 .page-entete {
@@ -455,16 +441,24 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 .article-entete h1,
 .page-entete h1,
 .introuvable h1 {
-  font-family: var(--police-titres);
-  font-weight: 600;
-  line-height: 1.15;
+  font-family: var(--police-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
   margin: 0 0 1rem;
   color: var(--texte);
 }
 
 .article-entete h1 {
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  max-width: 24ch;
+  max-width: 32ch;
+}
+
+/* Titres façon Markdown : le « # » en secondaire, la structure visible */
+.article-entete h1::before,
+.page-entete h1::before {
+  content: "# ";
+  color: var(--secondaire);
+  font-weight: 400;
 }
 
 .surtitre {
@@ -497,8 +491,7 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 .article-corps,
 .page-corps {
   max-width: var(--mesure-lecture);   /* SPECS §6 : ~70ch */
-  font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.65;
 }
 
 .article-corps > *:first-child {
@@ -507,24 +500,43 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 
 .article-corps p,
 .page-corps p {
-  margin: 1.35rem 0;
+  margin: 1.2rem 0;
 }
 
 .article-corps h2,
 .page-corps h2 {
-  font-family: var(--police-titres);
-  font-size: 1.55rem;
-  font-weight: 600;
-  line-height: 1.25;
-  margin: 2.5rem 0 0.9rem;
+  font-family: var(--police-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 2.25rem 0 0.9rem;
 }
 
 .article-corps h3,
 .page-corps h3 {
-  font-family: var(--police-titres);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 2rem 0 0.75rem;
+  font-family: var(--police-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.9rem 0 0.75rem;
+}
+
+.article-corps h2::before,
+.page-corps h2::before {
+  content: "## ";
+  color: var(--secondaire);
+  font-weight: 400;
+}
+
+.article-corps h3::before,
+.page-corps h3::before {
+  content: "### ";
+  color: var(--secondaire);
+  font-weight: 400;
+}
+
+/* L'index des thèmes a sa propre présentation : pas de préfixe */
+.liste-themes h2::before {
+  content: none;
 }
 
 .article-corps blockquote,
@@ -557,7 +569,7 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 /* Code : JetBrains Mono, discret, lisible */
 code {
   font-family: var(--police-mono);
-  font-size: 0.86em;
+  font-size: 0.95em;
   background: var(--fond-doux);
   border: 1px solid var(--bordure);
   border-radius: 0.3rem;
@@ -629,9 +641,9 @@ pre code {
 
 .article-nav a {
   text-decoration: none;
-  font-family: var(--police-titres);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-family: var(--police-mono);
+  font-size: 1rem;
+  font-weight: 700;
   line-height: 1.3;
   color: var(--texte);
 }
@@ -643,7 +655,7 @@ pre code {
 
 .article-nav-etiquette {
   display: block;
-  font-family: var(--police-texte);
+  font-family: var(--police-mono);
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -655,13 +667,9 @@ pre code {
 /* ─────────────────────────────────────────────
    7. Pages simples, thèmes, contact, 404
    ───────────────────────────────────────────── */
-.page-entete h1 {
-  font-size: clamp(2rem, 5vw, 2.6rem);
-}
-
 .page-chapeau {
   color: var(--texte-doux);
-  font-size: 1.05rem;
+  font-size: 1rem;
   max-width: 40rem;
 }
 
@@ -686,9 +694,9 @@ pre code {
 }
 
 .liste-themes h2 {
-  font-family: var(--police-titres);
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-family: var(--police-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0 0 0.25rem;
 }
 
@@ -789,18 +797,13 @@ a.pastille:hover {
   border-radius: 0.2rem;
 }
 
-/* Respect des préférences de mouvement (curseur compris) */
+/* Respect des préférences de mouvement */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
-  }
-
-  .tui-curseur {
-    animation: none;
-    visibility: visible;
   }
 }
 
@@ -819,11 +822,6 @@ a.pastille:hover {
 
   .article-nav-suivant {
     text-align: right;
-  }
-
-  .article-corps,
-  .page-corps {
-    font-size: 1.125rem;         /* 18px — confort de lecture sur écran */
   }
 
   .pied-interieur {

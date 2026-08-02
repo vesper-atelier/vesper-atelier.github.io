@@ -291,19 +291,16 @@ html[data-theme="dark"] .bascule-theme::before {
 
 .tui-titre {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0.45rem;
   margin: 0 0 1.1rem;
   font-family: var(--police-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--texte);
+  font-size: 0.82rem;
+  color: var(--secondaire);
 }
 
 .tui-prompt-sous {
-  color: var(--accent);            /* le « > » en or : l'attention discrète */
-  font-weight: 600;
+  color: var(--accent);            /* le « ~$ » en or : l'attention discrète */
 }
 
 /* Listes sèches : pas de puces, une ligne par entrée */

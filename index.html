@@ -19,7 +19,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
   <!-- ── Derniers articles : tri par date, une ligne par article ── -->
   <section class="tui-section" aria-labelledby="section-articles">
     <h2 class="tui-titre" id="section-articles">
-      <span class="tui-prompt-sous" aria-hidden="true">&gt;</span> ls ./articles
+      <span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./articles
     </h2>
     {% if site.posts.size > 0 %}
     <ul class="tui-liste">
@@ -38,7 +38,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
   <!-- ── Linked list : carnet de veille (lien + une ligne de commentaire) ── -->
   <section class="tui-section" aria-labelledby="section-liens">
     <h2 class="tui-titre" id="section-liens">
-      <span class="tui-prompt-sous" aria-hidden="true">&gt;</span> ls ./liens
+      <span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./liens
     </h2>
     <ul class="tui-liste">
       {% for lien in site.data.liens %}
@@ -52,7 +52,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
   <!-- ── Blogroll : le web comme réseau de connaissances ── -->
   <section class="tui-section" aria-labelledby="section-blogroll">
     <h2 class="tui-titre" id="section-blogroll">
-      <span class="tui-prompt-sous" aria-hidden="true">&gt;</span> ls ./blogroll
+      <span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./blogroll
     </h2>
     <ul class="tui-liste">
       {% for blog in site.data.blogroll %}
@@ -66,7 +66,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
   <!-- ── Archives par année : la profondeur du temps ── -->
   <section class="tui-section" aria-labelledby="section-archives">
     <h2 class="tui-titre" id="section-archives">
-      <span class="tui-prompt-sous" aria-hidden="true">&gt;</span> ls ./archives
+      <span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./archives
     </h2>
     {% assign annees = site.posts | group_by_exp: "article", "article.date | date: '%Y'" %}
     {% if annees.size > 0 %}
@@ -89,7 +89,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
   <!-- ── Ailleurs : réseaux, courriel, flux ── -->
   <section class="tui-section" aria-labelledby="section-ailleurs">
     <h2 class="tui-titre" id="section-ailleurs">
-      <span class="tui-prompt-sous" aria-hidden="true">&gt;</span> ls ./ailleurs
+      <span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./ailleurs
     </h2>
     <ul class="tui-liste">
       <li class="tui-ligne-veille">

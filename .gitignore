@@ -1,0 +1,7 @@
+# Sorties de build et dépendances locales — jamais versionnées
+_site/
+.bundle/
+vendor/
+Gemfile.lock
+tools/node_modules/
+tools/fonts/

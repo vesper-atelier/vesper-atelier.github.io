@@ -1,0 +1,841 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Vesper Atelier — feuille de style principale
+   Blog de chercheur · SPECS v3, thème TUI (voir SPECS.md)
+
+   — Tokens CSS (palette claire/sombre)          §1
+   — Base typographique (Cormorant / Source Serif / JetBrains Mono)  §2
+   — Thème clair/sombre (système + bascule)      §3
+   — En-tête, navigation, pied de page           §4
+   — Esthétique TUI (prompts, curseur, listes)   §5
+   — Article (lecture ~70ch, code, notes)        §6
+   — Pages simples, thèmes, contact, 404         §7
+   — Accessibilité (AA, clavier, motion)         §8
+
+   Mobile-first · zéro dépendance · contrastes AA
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. Tokens — thème clair (défaut)
+   Palette SPECS v3 : --fond #FAF7F2, --texte #1A1A1A,
+   --accent #C9A227 (or pâle), --secondaire #6B6B6B
+   ───────────────────────────────────────────── */
+:root {
+  --fond: #FAF7F2;
+  --fond-doux: #F2EDE3;          /* blocs de code, fonds légers */
+  --texte: #1A1A1A;
+  --texte-doux: #3D3D3D;         /* sous-titres, extraits */
+  --secondaire: #6B6B6B;         /* métadonnées, notes, légendes (AA) */
+  --accent: #C9A227;             /* or pâle — curseur, rares accents */
+  --lien: #7A5C00;               /* texte des liens (AA 5,9:1 sur fond clair) */
+  --lien-hover: #5C4400;
+  --bordure: rgba(26, 26, 26, 0.16);   /* bordures fines, style terminal */
+  --ombrage: rgba(26, 26, 26, 0.05);
+
+  --police-titres: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --police-texte: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --police-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --mesure-lecture: 70ch;        /* SPECS §6 : mesure de lecture ~70ch */
+}
+
+/* ─────────────────────────────────────────────
+   2. Tokens — thème sombre
+   Palette SPECS v3 : --fond #0A0A1A, --texte #F5F0E8
+   ───────────────────────────────────────────── */
+html[data-theme="dark"] {
+  --fond: #0A0A1A;
+  --fond-doux: #141430;
+  --texte: #F5F0E8;
+  --texte-doux: #D8D2C6;
+  --secondaire: #9B9BA8;         /* AA 7:1 sur fond sombre */
+  --accent: #C9A227;
+  --lien: #D9B44A;               /* or éclairci pour le texte (AA 9,9:1) */
+  --lien-hover: #EACB6E;
+  --bordure: rgba(245, 240, 232, 0.18);
+  --ombrage: rgba(0, 0, 0, 0.35);
+}
+
+/* Préférence système, en l'absence de choix manuel */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --fond: #0A0A1A;
+    --fond-doux: #141430;
+    --texte: #F5F0E8;
+    --texte-doux: #D8D2C6;
+    --secondaire: #9B9BA8;
+    --accent: #C9A227;
+    --lien: #D9B44A;
+    --lien-hover: #EACB6E;
+    --bordure: rgba(245, 240, 232, 0.18);
+    --ombrage: rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   3. Base
+   ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1.0625rem;          /* 17px — corps confortable */
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  flex: 1;
+  outline: none;                 /* l'ancre du lien d'évitement */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Conteneur principal : 46rem ≈ 736px, respiration généreuse */
+.conteneur {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Liens : soulignés, discrets, à l'encre — jamais criards */
+a {
+  color: var(--lien);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--lien-hover);
+  text-decoration-color: var(--accent);
+}
+
+/* Surlignage de sélection : or sur encre, sobre */
+::selection {
+  background: var(--accent);
+  color: #1A1A1A;
+}
+
+/* ─────────────────────────────────────────────
+   4. En-tête, navigation, pied de page
+   ───────────────────────────────────────────── */
+.entete {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.entete-interieur {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Prompt discret de l'en-tête : le marqueur TUI permanent */
+.entete-prompt {
+  margin: 0;
+  color: var(--secondaire);
+}
+
+.marque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--texte);
+  text-decoration: none;
+  font-family: var(--police-titres);
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+
+.marque:hover {
+  color: var(--texte);
+}
+
+.marque-etoile {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--accent);          /* l'étoile en filigrane, or pâle */
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.navigation a {
+  color: var(--secondaire);
+  text-decoration: none;
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.navigation a:hover {
+  color: var(--texte);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+/* RSS en évidence : or discret, jamais criard */
+.navigation-rss {
+  border: 1px solid var(--bordure);
+  border-radius: 0.3rem;
+  padding: 0.18rem 0.6rem;
+}
+
+.navigation-rss:hover {
+  border-color: var(--accent);
+}
+
+/* Bascule clair/sombre */
+.bascule-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 1px solid var(--bordure);
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--secondaire);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.bascule-theme:hover {
+  border-color: var(--accent);
+  color: var(--texte);
+}
+
+.bascule-theme .icone {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: none;
+}
+
+/* Selon le thème effectif, une seule icône est visible */
+html[data-theme="light"] .bascule-theme .icone-lune,
+html[data-theme="dark"] .bascule-theme .icone-soleil {
+  display: block;
+}
+
+/* Pied de page : trois lignes sobres */
+.pied {
+  border-top: 1px solid var(--bordure);
+  margin-top: 4rem;
+}
+
+.pied-interieur {
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pied-devis {
+  font-family: var(--police-titres);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--texte-doux);
+  margin: 0 0 0.75rem;
+}
+
+.pied-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--secondaire);
+}
+
+.pied-meta a {
+  color: var(--secondaire);
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+}
+
+.pied-meta a:hover {
+  color: var(--lien);
+  text-decoration-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────
+   5. Esthétique TUI — le cœur de la v3
+   Prompt ~$, curseur clignotant, listes sèches
+   ───────────────────────────────────────────── */
+
+/* Prompt : ~$ en mono, couleur secondaire, jamais criard */
+.tui-prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--police-mono);
+  font-size: 0.95rem;
+  color: var(--secondaire);
+}
+
+/* Curseur d'accent : bloc clignotant, or pâle */
+.tui-curseur {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  background: var(--accent);
+  animation: clignote 1.1s steps(2, start) infinite;
+}
+
+@keyframes clignote {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Sections de l'accueil : prompt « > » + titre en mono */
+.tui-section {
+  margin-top: 2.75rem;
+  border-top: 1px solid var(--bordure);   /* bordures fines, style terminal */
+  padding-top: 1.5rem;
+}
+
+.tui-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.tui-titre {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
+  font-family: var(--police-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--texte);
+}
+
+.tui-prompt-sous {
+  color: var(--accent);            /* le « > » en or : l'attention discrète */
+  font-weight: 600;
+}
+
+/* Listes sèches : pas de puces, une ligne par entrée */
+.tui-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tui-ligne {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;   /* date à gauche, contenu ensuite */
+  column-gap: 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bordure);
+}
+
+.tui-ligne:last-child {
+  border-bottom: none;
+}
+
+/* Métadonnées (dates, puces « * ») : mono, secondaire */
+.tui-meta {
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  color: var(--secondaire);
+  white-space: nowrap;
+}
+
+/* Lien de liste : le contenu, à l'encre */
+.tui-lien {
+  color: var(--texte);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.tui-lien:hover {
+  color: var(--lien);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+/* Extrait : une ligne de commentaire, discrète */
+.tui-extrait {
+  grid-column: 2;
+  font-size: 0.88rem;
+  color: var(--secondaire);
+  line-height: 1.5;
+}
+
+/* Entrées de veille (liens, blogroll, ailleurs) :
+   « * » en métadonnée, titre puis commentaire */
+.tui-ligne-veille .tui-extrait {
+  margin-top: 0.15rem;
+}
+
+.tui-vide {
+  color: var(--secondaire);
+  font-style: italic;
+  font-family: var(--police-mono);
+  font-size: 0.88rem;
+}
+
+/* Archives : année en mono, articles imbriqués */
+.tui-ligne-annee {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--bordure);
+}
+
+.tui-ligne-annee:last-child {
+  border-bottom: none;
+}
+
+.tui-liste-annee {
+  margin-top: 0.4rem;
+  padding-left: 0;
+}
+
+.tui-liste-annee .tui-ligne {
+  grid-template-columns: 3.5rem 1fr;
+  border-bottom: none;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 1px solid var(--bordure);
+}
+
+/* ─────────────────────────────────────────────
+   6. Article — lecture soignée (~70ch)
+   ───────────────────────────────────────────── */
+.article-entete,
+.page-entete {
+  padding: 2.5rem 0 1.75rem;
+}
+
+/* Chemin de fichier : `~$ cat <fichier>.md` — l'en-tête façon terminal */
+.article-chemin,
+.page-chemin {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.5rem;
+  font-family: var(--police-mono);
+  font-size: 0.82rem;
+  color: var(--secondaire);
+}
+
+.article-chemin-prompt {
+  color: var(--accent);
+}
+
+.article-entete h1,
+.page-entete h1,
+.introuvable h1 {
+  font-family: var(--police-titres);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--texte);
+}
+
+.article-entete h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  max-width: 24ch;
+}
+
+.surtitre {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+}
+
+.surtitre a {
+  color: var(--secondaire);
+  text-decoration: none;
+}
+
+.surtitre a:hover {
+  color: var(--lien);
+  text-decoration: underline;
+}
+
+/* Métadonnées : mono, secondaire — le souffle terminal */
+.article-meta {
+  margin: 0.35rem 0 0;
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  color: var(--secondaire);
+}
+
+.article-corps,
+.page-corps {
+  max-width: var(--mesure-lecture);   /* SPECS §6 : ~70ch */
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.article-corps > *:first-child {
+  margin-top: 0;
+}
+
+.article-corps p,
+.page-corps p {
+  margin: 1.35rem 0;
+}
+
+.article-corps h2,
+.page-corps h2 {
+  font-family: var(--police-titres);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2.5rem 0 0.9rem;
+}
+
+.article-corps h3,
+.page-corps h3 {
+  font-family: var(--police-titres);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+}
+
+.article-corps blockquote,
+.page-corps blockquote {
+  margin: 1.75rem 0;
+  padding: 0.1rem 0 0.1rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  color: var(--texte-doux);
+  font-style: italic;
+}
+
+.article-corps hr {
+  border: none;
+  border-top: 1px solid var(--bordure);
+  margin: 2.5rem 0;
+}
+
+.article-corps ul,
+.article-corps ol,
+.page-corps ul,
+.page-corps ol {
+  padding-left: 1.5rem;
+}
+
+.article-corps li,
+.page-corps li {
+  margin: 0.4rem 0;
+}
+
+/* Code : JetBrains Mono, discret, lisible */
+code {
+  font-family: var(--police-mono);
+  font-size: 0.86em;
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 0.3rem;
+  padding: 0.12em 0.4em;
+}
+
+pre {
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 0.5rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;              /* longues lignes : défilement, pas de casse */
+  line-height: 1.6;
+  font-size: 0.85rem;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* Notes de bas de page (kramdown [^1]) */
+.article-corps .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bordure);
+  font-size: 0.88rem;
+  color: var(--secondaire);
+}
+
+.article-corps .footnotes ol {
+  padding-left: 1.4rem;
+}
+
+.article-corps .footnotes li {
+  margin: 0.5rem 0;
+}
+
+.article-corps sup a {
+  color: var(--lien);
+  text-decoration: none;
+  font-size: 0.75em;
+}
+
+.article-corps sup a:hover {
+  text-decoration: underline;
+}
+
+.article-corps .reversefootnote {
+  color: var(--secondaire);
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+/* Pied d'article : navigation précédent/suivant */
+.article-pied {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bordure);
+}
+
+.article-nav {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.article-nav a {
+  text-decoration: none;
+  font-family: var(--police-titres);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--texte);
+}
+
+.article-nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.article-nav-etiquette {
+  display: block;
+  font-family: var(--police-texte);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+  margin-bottom: 0.2rem;
+}
+
+/* ─────────────────────────────────────────────
+   7. Pages simples, thèmes, contact, 404
+   ───────────────────────────────────────────── */
+.page-entete h1 {
+  font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.page-chapeau {
+  color: var(--texte-doux);
+  font-size: 1.05rem;
+  max-width: 40rem;
+}
+
+.theme-articles {
+  margin-top: 2.5rem;
+}
+
+/* Index des thèmes */
+.liste-themes {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.liste-themes li {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--bordure);
+}
+
+.liste-themes li:last-child {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.liste-themes h2 {
+  font-family: var(--police-titres);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.liste-themes h2 a {
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.liste-themes h2 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.liste-themes p {
+  margin: 0;
+  color: var(--texte-doux);
+}
+
+.pastille {
+  display: inline-block;
+  margin-left: 0.55rem;
+  padding: 0.1em 0.7em;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+  text-decoration: none;
+  vertical-align: 0.1em;
+}
+
+a.pastille:hover {
+  border-color: var(--accent);
+  color: var(--lien);
+}
+
+/* 404 : une seule ligne. « aucune sortie. » */
+.introuvable {
+  text-align: center;
+  padding: 5rem 0 3rem;
+  max-width: 34rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+.introuvable-ligne {
+  font-family: var(--police-mono);
+  font-size: 1.05rem;
+  color: var(--texte);
+  margin: 0;
+}
+
+.introuvable-retour a {
+  font-family: var(--police-mono);
+  font-size: 0.9rem;
+  color: var(--secondaire);
+  text-decoration: none;
+}
+
+.introuvable-retour a:hover {
+  color: var(--lien);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────
+   8. Accessibilité
+   ───────────────────────────────────────────── */
+
+/* Lien d'évitement : invisible, révélé au focus clavier */
+.lien-saut {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  background: var(--texte);
+  color: var(--fond);
+  border-radius: 0 0 0.375rem 0.375rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lien-saut:focus {
+  top: 0;
+  color: var(--fond);
+  background: var(--texte);
+}
+
+/* Focus clavier visible partout */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+/* Respect des préférences de mouvement (curseur compris) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .tui-curseur {
+    animation: none;
+    visibility: visible;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   9. Écrans plus larges (≥ 40em)
+   ───────────────────────────────────────────── */
+@media (min-width: 40em) {
+  .entete-interieur {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .article-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .article-nav-suivant {
+    text-align: right;
+  }
+
+  .article-corps,
+  .page-corps {
+    font-size: 1.125rem;         /* 18px — confort de lecture sur écran */
+  }
+
+  .pied-interieur {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .pied-devis {
+    margin: 0;
+  }
+
+  .pied-meta {
+    text-align: right;
+  }
+}

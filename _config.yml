@@ -1,0 +1,89 @@
+# ═══════════════════════════════════════════════════════════════════
+# Vesper Atelier — configuration Jekyll
+# Blog de chercheur · SPECS v3 (thème TUI, voir SPECS.md)
+# Hébergé sur GitHub Pages : https://vesper-atelier.github.io
+# ═══════════════════════════════════════════════════════════════════
+
+title: "Vesper Atelier"
+tagline: "Eosphoros et Hesperos — la même étoile"
+
+description: >-
+  Blog de chercheur sobre et élégant. Programmation, LLM, mathématiques,
+  mythologie — et les ponts entre ces disciplines. Eosphoros et Hesperos
+  sont la même étoile : les savoirs semblent séparés, ils sont une seule lumière.
+
+# URL absolue du site (utilisée par le flux Atom, le sitemap et les balises OG)
+url: "https://vesper-atelier.github.io"
+baseurl: ""
+
+lang: fr
+timezone: Europe/Paris
+
+author:
+  name: "Vesper"
+  email: "vesper@vesper-atelier.github.io"
+
+# ── Catégories du carnet (SPECS v3 §7) ───────────────────────────
+# Quatre disciplines + le territoire des ponts (le fil rouge).
+categories:
+  - programmation
+  - llm
+  - maths
+  - mythologie
+  - ponts
+
+# ── Moteur Markdown ────────────────────────────────────────────────
+# kramdown (défaut GitHub Pages) : prend en charge les notes de bas de
+# page [^1] et l'auto-génération des ancres de titres.
+markdown: kramdown
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..3
+
+highlighter: rouge
+
+# ── Permaliens ─────────────────────────────────────────────────────
+# Structure par thème : /programmation/titre-de-l-article/
+permalink: /:categories/:title/
+
+# ── Contenu ────────────────────────────────────────────────────────
+# Les brouillons vivent dans _drafts/ (visibles avec `jekyll serve --drafts`)
+future: false
+
+# ── Données (linked list, blogroll) ───────────────────────────────
+# _data/liens.yml      → section « Liens » de l'accueil (carnet de veille)
+# _data/blogroll.yml   → section « Blogroll » de l'accueil (blogs lus)
+
+# ── Fichiers locaux exclus du site généré ──────────────────────────
+exclude:
+  - README.md
+  - SPECS.md
+  - Gemfile
+  - Gemfile.lock
+  - tools
+  - vendor
+  - .git
+  - .github
+  - .gitignore
+
+# ── Valeurs par défaut ─────────────────────────────────────────────
+defaults:
+  # Articles publiés
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  # Pages de thème (programmation, llm, maths, mythologie, ponts)
+  - scope:
+      path: "themes"
+    values:
+      layout: theme
+  # Pages génériques (front matter explicite si besoin d'un autre layout)
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page

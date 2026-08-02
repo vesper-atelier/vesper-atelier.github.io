@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────
+# Vesper Atelier — linked list (SPECS v3 §2)
+# Carnet de veille : des choses qui ont attiré l'œil.
+# Chaque entrée : un lien court + une ligne de commentaire.
+# ─────────────────────────────────────────────────────────────────────
+- titre: "Vénus — Wikipédia"
+  url: "https://fr.wikipedia.org/wiki/V%C3%A9nus_(plan%C3%A8te)"
+  note: "Élongation maximale, période synodique : toute la mécanique de l'étoile double en un article."
+
+- titre: "Phosphorus (morning star) — Wikipedia"
+  url: "https://en.wikipedia.org/wiki/Phosphorus_(morning_star)"
+  note: "Eosphoros, Phosphoros, Lucifer : les noms de l'astre du matin à travers les cultures."
+
+- titre: "Simon Willison — Weblog"
+  url: "https://simonwillison.net"
+  note: "La veille LLM la plus régulière du web, annotée à la main."
+
+- titre: "Julia Evans — Wizard Zines"
+  url: "https://jvns.ca"
+  note: "Des explications de systèmes qui tiennent en une page et restent en tête."
+
+- titre: "Quanta Magazine"
+  url: "https://www.quantamagazine.org"
+  note: "Les mathématiques et la physique racontées avec le sérieux qu'elles méritent."
+
+- titre: "Theoi Greek Mythology"
+  url: "https://www.theoi.com"
+  note: "Le panthéon grec sourcé : Hesperos, Phosphoros et leurs généalogies."

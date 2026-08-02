@@ -1,0 +1,39 @@
+<!-- En-tête du site : prompt discret + marque + navigation + RSS + bascule thème -->
+<header class="entete">
+  <div class="conteneur entete-interieur">
+    <!-- Prompt discret : l'ADN TUI, présent sur toutes les pages -->
+    <p class="tui-prompt entete-prompt" aria-hidden="true">
+      <span class="tui-prompt-texte">~$</span>
+      <span class="tui-curseur" role="presentation"></span>
+    </p>
+
+    <a class="marque" href="{{ '/' | relative_url }}">
+      <!-- Étoile à 4 branches, filigrane discret (décorative) -->
+      <svg class="marque-etoile" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 0.8 C12.9 7.2 16.8 11.1 23.2 12 C16.8 12.9 12.9 16.8 12 23.2 C11.1 16.8 7.2 12.9 0.8 12 C7.2 11.1 11.1 7.2 12 0.8 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      <span class="marque-nom">{{ site.title }}</span>
+    </a>
+
+    <nav class="navigation" aria-label="Navigation principale">
+      <a href="{{ '/' | relative_url }}">Articles</a>
+      <a href="{{ '/themes/' | relative_url }}">Thèmes</a>
+      <a href="{{ '/about/' | relative_url }}">À propos</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      <a class="navigation-rss" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </nav>
+
+    <button id="bascule-theme" class="bascule-theme" type="button"
+            aria-pressed="false" aria-label="Basculer en thème sombre" title="Basculer en thème sombre">
+      <!-- Lune (visible en thème clair) -->
+      <svg class="icone icone-lune" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <!-- Soleil (visible en thème sombre) -->
+      <svg class="icone icone-soleil" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>

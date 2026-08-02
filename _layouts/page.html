@@ -1,0 +1,18 @@
+---
+# Layout générique des pages simples (à propos, contact, thèmes…).
+layout: default
+---
+<article class="page">
+  <header class="page-entete">
+    <p class="page-chemin" aria-hidden="true">
+      <span class="article-chemin-prompt">~$</span>
+      <span class="article-chemin-fichier">cat {{ page.path }}</span>
+      <span class="tui-curseur" role="presentation"></span>
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.sous_titre %}<p class="page-chapeau">{{ page.sous_titre }}</p>{% endif %}
+  </header>
+  <div class="page-corps">
+    {{ content }}
+  </div>
+</article>

@@ -337,15 +337,10 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
 
 .tui-ligne {
   display: grid;
-  grid-template-columns: 7.5rem 1fr;   /* date à gauche, contenu ensuite */
+  grid-template-columns: 6rem 1fr;   /* date à gauche, contenu ensuite */
   column-gap: 1rem;
   align-items: baseline;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--bordure);
-}
-
-.tui-ligne:last-child {
-  border-bottom: none;
+  padding: 0.22rem 0;
 }
 
 /* Métadonnées (dates, puces « * ») : mono, secondaire */
@@ -369,18 +364,20 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
   text-decoration-color: var(--accent);
 }
 
-/* Extrait : une ligne de commentaire, discrète */
-.tui-extrait {
-  grid-column: 2;
-  font-size: 0.88rem;
-  color: var(--secondaire);
-  line-height: 1.5;
+/* Entrées de veille (liens, blogroll, ailleurs) : puce accent inline,
+   commentaire sur la même ligne — un seul flux de texte */
+.tui-ligne-veille {
+  padding: 0.22rem 0;
 }
 
-/* Entrées de veille (liens, blogroll, ailleurs) :
-   « * » en métadonnée, titre puis commentaire */
-.tui-ligne-veille .tui-extrait {
-  margin-top: 0.15rem;
+.tui-puce {
+  color: var(--accent);
+  margin-right: 0.6rem;
+}
+
+.tui-note {
+  color: var(--secondaire);
+  font-size: 0.85rem;
 }
 
 .tui-vide {
@@ -390,26 +387,21 @@ html[data-theme="dark"] .bascule-theme .icone-soleil {
   font-size: 0.88rem;
 }
 
-/* Archives : année en mono, articles imbriqués */
-.tui-ligne-annee {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--bordure);
-}
-
-.tui-ligne-annee:last-child {
-  border-bottom: none;
+/* Archives : année en mono secondaire, lignes aplaties */
+.tui-annee-titre {
+  margin: 1.25rem 0 0.35rem;
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondaire);
 }
 
 .tui-liste-annee {
-  margin-top: 0.4rem;
   padding-left: 0;
 }
 
 .tui-liste-annee .tui-ligne {
   grid-template-columns: 3.5rem 1fr;
-  border-bottom: none;
-  padding: 0.2rem 0 0.2rem 1rem;
-  border-left: 1px solid var(--bordure);
 }
 
 /* ─────────────────────────────────────────────

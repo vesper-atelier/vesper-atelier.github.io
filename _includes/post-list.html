@@ -1,6 +1,6 @@
 <!-- Liste d'articles réutilisable (accueil, pages de thème) — style TUI.
      Usage : {% raw %}{% include post-list.html posts=ma_collection %}{% endraw %}
-     Une ligne par article : date en mono, titre, extrait court. -->
+     Une ligne par article : date en mono, titre. -->
 {% assign liste = include.posts %}
 {% if liste.size > 0 %}
 <ul class="tui-liste">
@@ -8,9 +8,6 @@
   <li class="tui-ligne">
     <span class="tui-meta">{{ article.date | date: "%Y-%m-%d" }}</span>
     <a class="tui-lien" href="{{ article.url | relative_url }}">{{ article.title }}</a>
-    {% if article.excerpt %}
-    <span class="tui-extrait">{{ article.excerpt | strip_html | truncatewords: 22 }}</span>
-    {% endif %}
   </li>
   {% endfor %}
 </ul>

@@ -563,6 +563,76 @@ pre code {
   font-size: 1em;
 }
 
+/* ─────────────────────────────────────────────
+   Coloration syntaxique (rouge) — thème custom
+   Alignée sur la palette : or discret, tons sourds,
+   AA en clair comme en sombre.
+   ───────────────────────────────────────────── */
+.highlight {
+  margin: 1.75rem 0;
+}
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs,
+.highlight .ge {
+  font-style: italic;
+}
+
+/* Clair (défaut) */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cp, .highlight .cs { color: #6B6B6B; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .ow { color: #7A5C00; font-weight: 600; }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .se, .highlight .sh, .highlight .si, .highlight .sr, .highlight .ss { color: #2E6B50; }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo { color: #7A3E00; }
+.highlight .n, .highlight .nb, .highlight .nf, .highlight .na, .highlight .nc, .highlight .no, .highlight .nt, .highlight .nv, .highlight .nx { color: #1A1A1A; }
+.highlight .o, .highlight .p { color: #6B6B6B; }
+.highlight .gd { color: #8B2E2E; }
+.highlight .gi { color: #2E6B50; }
+
+/* Sombre */
+html[data-theme="dark"] .highlight .c,
+html[data-theme="dark"] .highlight .c1,
+html[data-theme="dark"] .highlight .cm,
+html[data-theme="dark"] .highlight .cp,
+html[data-theme="dark"] .highlight .cs { color: #9B9BA8; }
+html[data-theme="dark"] .highlight .k,
+html[data-theme="dark"] .highlight .kc,
+html[data-theme="dark"] .highlight .kd,
+html[data-theme="dark"] .highlight .kn,
+html[data-theme="dark"] .highlight .kp,
+html[data-theme="dark"] .highlight .kr,
+html[data-theme="dark"] .highlight .kt,
+html[data-theme="dark"] .highlight .ow { color: #D9B44A; font-weight: 600; }
+html[data-theme="dark"] .highlight .s,
+html[data-theme="dark"] .highlight .s1,
+html[data-theme="dark"] .highlight .s2,
+html[data-theme="dark"] .highlight .sb,
+html[data-theme="dark"] .highlight .sc,
+html[data-theme="dark"] .highlight .se,
+html[data-theme="dark"] .highlight .sh,
+html[data-theme="dark"] .highlight .si,
+html[data-theme="dark"] .highlight .sr,
+html[data-theme="dark"] .highlight .ss { color: #7ECB9B; }
+html[data-theme="dark"] .highlight .m,
+html[data-theme="dark"] .highlight .mi,
+html[data-theme="dark"] .highlight .mf,
+html[data-theme="dark"] .highlight .mh,
+html[data-theme="dark"] .highlight .mo { color: #E8A15A; }
+html[data-theme="dark"] .highlight .n,
+html[data-theme="dark"] .highlight .nb,
+html[data-theme="dark"] .highlight .nf,
+html[data-theme="dark"] .highlight .na,
+html[data-theme="dark"] .highlight .nc,
+html[data-theme="dark"] .highlight .no,
+html[data-theme="dark"] .highlight .nt,
+html[data-theme="dark"] .highlight .nv,
+html[data-theme="dark"] .highlight .nx { color: #F5F0E8; }
+html[data-theme="dark"] .highlight .o,
+html[data-theme="dark"] .highlight .p { color: #9B9BA8; }
+html[data-theme="dark"] .highlight .gd { color: #E08484; }
+html[data-theme="dark"] .highlight .gi { color: #7ECB9B; }
+
 /* Notes de bas de page (kramdown [^1]) */
 .article-corps .footnotes {
   margin-top: 3rem;

@@ -1,0 +1,14 @@
+<!-- Pied de page : sobre, le fil rouge en une phrase -->
+<footer class="pied">
+  <div class="conteneur pied-interieur">
+    <p class="pied-devis">Eosphoros et Hesperos sont la même étoile.</p>
+    <p class="pied-meta">
+      <a href="{{ '/feed.xml' | relative_url }}">Flux RSS</a>
+      <span aria-hidden="true">·</span>
+      <a href="{{ '/sitemap.xml' | relative_url }}">Sitemap</a>
+    </p>
+    <p class="pied-meta">
+      © {{ site.time | date: "%Y" }} {{ site.author.name }} — fait avec Jekyll, servi par GitHub Pages.
+    </p>
+  </div>
+</footer>

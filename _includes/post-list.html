@@ -1,0 +1,28 @@
+<!-- Liste d'articles réutilisable (accueil, pages de thème).
+     Usage : {% raw %}{% include post-list.html posts=ma_collection %}{% endraw %}
+     Chaque carte : titre, date en français, catégories, extrait. -->
+{% assign liste = include.posts %}
+{% if liste.size > 0 %}
+<ul class="liste-articles">
+  {% for article in liste %}
+  <li class="article-carte">
+    <h2 class="article-carte-titre">
+      <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
+    </h2>
+    <p class="article-meta">
+      <time datetime="{{ article.date | date_to_xmlschema }}">
+        {%- include date-fr.html date=article.date -%}
+      </time>
+      {% for categorie in article.categories %}
+        <a class="pastille" href="{{ '/themes/' | append: categorie | relative_url }}">{{ categorie }}</a>
+      {% endfor %}
+    </p>
+    {% if article.excerpt %}
+    <p class="article-carte-extrait">{{ article.excerpt | strip_html | truncatewords: 42 }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="vide">Aucun article publié sur ce thème pour l'instant — les brouillons se préparent.</p>
+{% endif %}

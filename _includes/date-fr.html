@@ -1,0 +1,6 @@
+<!-- Date longue en français, sans dépendance aux locales Ruby.
+     Usage : {% raw %}{% include date-fr.html date=page.date %}{% endraw %}
+     Rend : « 2 août 2026 » -->
+{%- assign mois_fr = "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre" | split: "," -%}
+{%- assign numero = include.date | date: "%-m" | minus: 1 -%}
+{{ include.date | date: "%-d" }} {{ mois_fr[numero] }} {{ include.date | date: "%Y" }}

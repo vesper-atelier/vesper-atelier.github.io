@@ -1,0 +1,792 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Vesper Atelier — feuille de style principale
+   Blog de chercheur · SPECS v2 (voir SPECS.md)
+
+   — Tokens CSS (palette claire/sombre)          §1
+   — Base typographique (Cormorant / Source Serif / JetBrains Mono)  §2
+   — Thème clair/sombre (système + bascule)      §3
+   — En-tête, navigation, pied de page           §4
+   — Accueil (liste d'articles)                  §5
+   — Article (lecture ~70ch, code, notes)        §6
+   — Pages simples, thèmes, contact, 404         §7
+   — Accessibilité (AA, clavier, motion)         §8
+
+   Mobile-first · zéro dépendance · contrastes AA
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. Tokens — thème clair (défaut)
+   Palette SPECS v2 : --fond #FAF7F2, --texte #1A1A1A,
+   --accent #C9A227 (or pâle), --secondaire #6B6B6B
+   ───────────────────────────────────────────── */
+:root {
+  --fond: #FAF7F2;
+  --fond-doux: #F2EDE3;          /* blocs de code, cartes, fonds légers */
+  --texte: #1A1A1A;
+  --texte-doux: #3D3D3D;         /* sous-titres, extraits */
+  --secondaire: #6B6B6B;         /* métadonnées, notes, légendes (AA) */
+  --accent: #C9A227;             /* or pâle — décor, soulignés, étoile */
+  --lien: #7A5C00;               /* texte des liens (AA 5,9:1 sur fond clair) */
+  --lien-hover: #5C4400;
+  --bordure: rgba(26, 26, 26, 0.14);
+  --ombrage: rgba(26, 26, 26, 0.05);
+
+  --police-titres: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --police-texte: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --police-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --mesure-lecture: 70ch;        /* SPECS §6 : mesure de lecture ~70ch */
+}
+
+/* ─────────────────────────────────────────────
+   2. Tokens — thème sombre
+   Palette SPECS v2 : --fond #0A0A1A, --texte #F5F0E8
+   Appliqué quand data-theme="dark" (bascule manuelle)
+   OU quand le système préfère le sombre (sans choix manuel)
+   ───────────────────────────────────────────── */
+html[data-theme="dark"] {
+  --fond: #0A0A1A;
+  --fond-doux: #141430;          /* légèrement plus clair que le fond */
+  --texte: #F5F0E8;
+  --texte-doux: #D8D2C6;
+  --secondaire: #9B9BA8;         /* AA 7:1 sur fond sombre */
+  --accent: #C9A227;
+  --lien: #D9B44A;               /* or éclairci pour le texte (AA 9,9:1) */
+  --lien-hover: #EACB6E;
+  --bordure: rgba(245, 240, 232, 0.16);
+  --ombrage: rgba(0, 0, 0, 0.35);
+}
+
+/* Préférence système, en l'absence de choix manuel */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --fond: #0A0A1A;
+    --fond-doux: #141430;
+    --texte: #F5F0E8;
+    --texte-doux: #D8D2C6;
+    --secondaire: #9B9BA8;
+    --accent: #C9A227;
+    --lien: #D9B44A;
+    --lien-hover: #EACB6E;
+    --bordure: rgba(245, 240, 232, 0.16);
+    --ombrage: rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   3. Base
+   ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1.0625rem;          /* 17px — corps confortable */
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  flex: 1;
+  outline: none;                 /* l'ancre du lien d'évitement */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Conteneur principal : 46rem ≈ 736px, respiration généreuse */
+.conteneur {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Liens : soulignés, discrets, à l'encre — jamais criards */
+a {
+  color: var(--lien);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--lien-hover);
+  text-decoration-color: var(--accent);
+}
+
+/* Surlignage de sélection : or sur encre, sobre */
+::selection {
+  background: var(--accent);
+  color: #1A1A1A;
+}
+
+/* ─────────────────────────────────────────────
+   4. En-tête, navigation, pied de page
+   ───────────────────────────────────────────── */
+.entete {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.entete-interieur {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.marque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--texte);
+  text-decoration: none;
+  font-family: var(--police-titres);
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+
+.marque:hover {
+  color: var(--texte);
+}
+
+.marque-etoile {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--accent);          /* l'étoile en filigrane, or pâle */
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-left: auto;
+}
+
+.navigation a {
+  color: var(--secondaire);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.navigation a:hover {
+  color: var(--texte);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+/* Bascule clair/sombre */
+.bascule-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 1px solid var(--bordure);
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--secondaire);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.bascule-theme:hover {
+  border-color: var(--accent);
+  color: var(--texte);
+}
+
+.bascule-theme .icone {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: none;
+}
+
+/* Selon le thème effectif, une seule icône est visible */
+html[data-theme="light"] .bascule-theme .icone-lune,
+html[data-theme="dark"] .bascule-theme .icone-soleil {
+  display: block;
+}
+
+/* Pied de page : trois lignes sobres */
+.pied {
+  border-top: 1px solid var(--bordure);
+  margin-top: 4rem;
+}
+
+.pied-interieur {
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pied-devis {
+  font-family: var(--police-titres);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--texte-doux);
+  margin: 0 0 0.75rem;
+}
+
+.pied-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--secondaire);
+}
+
+.pied-meta a {
+  color: var(--secondaire);
+}
+
+/* ─────────────────────────────────────────────
+   5. Accueil
+   ───────────────────────────────────────────── */
+.accueil-hero {
+  padding: 3.5rem 0 2.75rem;
+}
+
+.hero-etoile {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.surtitre {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+}
+
+.accueil-hero h1,
+.page-entete h1,
+.article-entete h1,
+.introuvable h1 {
+  font-family: var(--police-titres);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--texte);
+}
+
+.accueil-hero h1 {
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  max-width: 22ch;
+}
+
+.hero-texte {
+  font-size: 1.1rem;
+  color: var(--texte-doux);
+  max-width: 40rem;
+}
+
+.accueil-articles {
+  padding-bottom: 2rem;
+}
+
+/* Liste d'articles (accueil + thèmes) */
+.liste-articles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-carte {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--bordure);
+}
+
+.article-carte:last-child {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.article-carte-titre {
+  font-family: var(--police-titres);
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.article-carte-titre a {
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.article-carte-titre a:hover {
+  color: var(--texte);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+}
+
+/* Métadonnées : date + pastilles de catégories */
+.article-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--secondaire);
+}
+
+.pastille {
+  display: inline-block;
+  margin-left: 0.55rem;
+  padding: 0.1em 0.7em;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+  text-decoration: none;
+  vertical-align: 0.1em;
+}
+
+a.pastille:hover {
+  border-color: var(--accent);
+  color: var(--lien);
+}
+
+.article-carte-extrait {
+  margin: 0.6rem 0 0;
+  color: var(--texte-doux);
+  max-width: 42rem;
+}
+
+.vide {
+  color: var(--secondaire);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   6. Article — lecture soignée (~70ch)
+   ───────────────────────────────────────────── */
+.article-entete,
+.page-entete {
+  padding: 3rem 0 1.75rem;
+}
+
+.article-entete h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  max-width: 24ch;
+}
+
+.article-entete .surtitre a {
+  color: var(--secondaire);
+  text-decoration: none;
+}
+
+.article-entete .surtitre a:hover {
+  color: var(--lien);
+  text-decoration: underline;
+}
+
+.article-corps,
+.page-corps {
+  max-width: var(--mesure-lecture);   /* SPECS §6 : ~70ch */
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.article-corps > *:first-child {
+  margin-top: 0;
+}
+
+.article-corps p,
+.page-corps p {
+  margin: 1.35rem 0;
+}
+
+.article-corps h2,
+.page-corps h2 {
+  font-family: var(--police-titres);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2.5rem 0 0.9rem;
+}
+
+.article-corps h3,
+.page-corps h3 {
+  font-family: var(--police-titres);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+}
+
+.article-corps blockquote,
+.page-corps blockquote {
+  margin: 1.75rem 0;
+  padding: 0.1rem 0 0.1rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  color: var(--texte-doux);
+  font-style: italic;
+}
+
+.article-corps hr {
+  border: none;
+  border-top: 1px solid var(--bordure);
+  margin: 2.5rem 0;
+}
+
+.article-corps ul,
+.article-corps ol,
+.page-corps ul,
+.page-corps ol {
+  padding-left: 1.5rem;
+}
+
+.article-corps li,
+.page-corps li {
+  margin: 0.4rem 0;
+}
+
+/* Code : JetBrains Mono, discret, lisible */
+code {
+  font-family: var(--police-mono);
+  font-size: 0.86em;
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 0.3rem;
+  padding: 0.12em 0.4em;
+}
+
+pre {
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 0.5rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;              /* longues lignes : défilement, pas de casse */
+  line-height: 1.6;
+  font-size: 0.85rem;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* Notes de bas de page (kramdown [^1]) */
+.article-corps .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bordure);
+  font-size: 0.88rem;
+  color: var(--secondaire);
+}
+
+.article-corps .footnotes ol {
+  padding-left: 1.4rem;
+}
+
+.article-corps .footnotes li {
+  margin: 0.5rem 0;
+}
+
+.article-corps sup a {
+  color: var(--lien);
+  text-decoration: none;
+  font-size: 0.75em;
+}
+
+.article-corps sup a:hover {
+  text-decoration: underline;
+}
+
+.article-corps .reversefootnote {
+  color: var(--secondaire);
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+/* Pied d'article : navigation précédent/suivant */
+.article-pied {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bordure);
+}
+
+.article-nav {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.article-nav a {
+  text-decoration: none;
+  font-family: var(--police-titres);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--texte);
+}
+
+.article-nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.article-nav-etiquette {
+  display: block;
+  font-family: var(--police-texte);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondaire);
+  margin-bottom: 0.2rem;
+}
+
+/* ─────────────────────────────────────────────
+   7. Pages simples, thèmes, contact, 404
+   ───────────────────────────────────────────── */
+.page-entete h1 {
+  font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.page-chapeau {
+  color: var(--texte-doux);
+  font-size: 1.05rem;
+  max-width: 40rem;
+}
+
+.theme-articles {
+  margin-top: 2.5rem;
+}
+
+/* Index des thèmes */
+.liste-themes {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.liste-themes li {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--bordure);
+}
+
+.liste-themes li:last-child {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.liste-themes h2 {
+  font-family: var(--police-titres);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.liste-themes h2 a {
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.liste-themes h2 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.liste-themes p {
+  margin: 0;
+  color: var(--texte-doux);
+}
+
+/* Formulaire de contact (mailto) */
+.formulaire {
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.champ {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.champ label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--secondaire);
+}
+
+.champ input,
+.champ textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  color: var(--texte);
+  background: var(--fond);
+  border: 1px solid var(--bordure);
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease;
+}
+
+.champ input:focus,
+.champ textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.champ-aide {
+  font-size: 0.88rem;
+  color: var(--secondaire);
+  min-height: 1.2em;
+  margin: 0;
+}
+
+.bouton {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.375rem;
+  background: transparent;
+  color: var(--lien);
+  font-family: var(--police-texte);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.bouton:hover {
+  background: var(--accent);
+  color: #1A1A1A;
+}
+
+/* 404 */
+.introuvable {
+  text-align: center;
+  padding: 5rem 0 3rem;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.introuvable-etoile {
+  width: 3rem;
+  height: 3rem;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.introuvable h1 {
+  font-size: clamp(1.9rem, 5vw, 2.5rem);
+}
+
+.introuvable p {
+  color: var(--texte-doux);
+}
+
+/* ─────────────────────────────────────────────
+   8. Accessibilité
+   ───────────────────────────────────────────── */
+
+/* Lien d'évitement : invisible, révélé au focus clavier */
+.lien-saut {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  background: var(--texte);
+  color: var(--fond);
+  border-radius: 0 0 0.375rem 0.375rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lien-saut:focus {
+  top: 0;
+  color: var(--fond);
+  background: var(--texte);
+}
+
+/* Focus clavier visible partout */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+/* Respect des préférences de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   9. Écrans plus larges (≥ 40em)
+   ───────────────────────────────────────────── */
+@media (min-width: 40em) {
+  .entete-interieur {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .accueil-hero {
+    padding: 4.5rem 0 3.5rem;
+  }
+
+  .article-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .article-nav-suivant {
+    text-align: right;
+  }
+
+  .article-corps,
+  .page-corps {
+    font-size: 1.125rem;         /* 18px — confort de lecture sur écran */
+  }
+
+  .pied-interieur {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .pied-devis {
+    margin: 0;
+  }
+
+  .pied-meta {
+    text-align: right;
+  }
+}

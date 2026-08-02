@@ -1,0 +1,23 @@
+---
+layout: default
+title: Accueil
+description: Carnet de recherche — programmation, LLM, mathématiques, mythologie, et les ponts entre eux.
+---
+<!-- Accueil : brève introduction (le fil rouge) puis la liste des articles. -->
+<section class="accueil-hero">
+  <svg class="hero-etoile" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M12 0.8 C12.9 7.2 16.8 11.1 23.2 12 C16.8 12.9 12.9 16.8 12 23.2 C11.1 16.8 7.2 12.9 0.8 12 C7.2 11.1 11.1 7.2 12 0.8 Z" fill="currentColor"/>
+  </svg>
+  <p class="surtitre">Carnet de recherche</p>
+  <h1>La même étoile, le soir et le matin.</h1>
+  <p class="hero-texte">
+    Programmation, LLM, mathématiques, mythologie — et surtout les ponts entre eux.
+    Les Grecs croyaient Eosphoros et Hesperos distincts ; ils n'étaient qu'un seul astre.
+    Les disciplines semblent séparées : elles sont une seule lumière.
+  </p>
+</section>
+
+<section class="accueil-articles" aria-labelledby="articles-titre">
+  <h2 id="articles-titre" class="surtitre">Articles</h2>
+  {% include post-list.html posts=site.posts %}
+</section>

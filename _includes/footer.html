@@ -1,14 +1,14 @@
-<!-- Pied de page : sobre, le fil rouge en une phrase, RSS en évidence -->
+<!-- Pied de page : une ligne mono — la devise, le flux, l'atelier -->
 <footer class="pied">
   <div class="conteneur pied-interieur">
-    <p class="pied-devis">Eosphoros et Hesperos sont la même étoile.</p>
     <p class="pied-meta">
-      <a class="pied-rss" href="{{ '/feed.xml' | relative_url }}">Flux RSS</a>
-      <span aria-hidden="true">·</span>
+      <span class="pied-devis">Eosphoros et Hesperos sont la même étoile.</span>
+      <span aria-hidden="true"> · </span>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      <span aria-hidden="true"> · </span>
       <a href="{{ '/sitemap.xml' | relative_url }}">Sitemap</a>
-    </p>
-    <p class="pied-meta">
-      © {{ site.time | date: "%Y" }} {{ site.author.name }} — fait avec Jekyll, servi par GitHub Pages.
+      <span aria-hidden="true"> · </span>
+      © {{ site.time | date: "%Y" }} {{ site.author.name }}
     </p>
   </div>
 </footer>

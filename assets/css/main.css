@@ -153,21 +153,16 @@ a:hover {
   padding-bottom: 1rem;
 }
 
-/* Prompt discret de l'en-tête : le marqueur TUI permanent */
-.entete-prompt {
-  margin: 0;
-  color: var(--secondaire);
-}
-
+/* Marque : une ligne de terminal — étoile, prompt ~$, nom */
 .marque {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
   color: var(--texte);
   text-decoration: none;
   font-family: var(--police-mono);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.02em;
 }
 
@@ -176,9 +171,14 @@ a:hover {
 }
 
 .marque-etoile {
-  width: 1.1em;
-  height: 1.1em;
+  width: 1em;
+  height: 1em;
   color: var(--accent);          /* l'étoile en filigrane, or pâle */
+}
+
+.marque-prompt {
+  color: var(--accent);          /* ~$ en or : l'attention discrète */
+  font-weight: 600;
 }
 
 .navigation {
@@ -203,68 +203,46 @@ a:hover {
   text-decoration-color: var(--accent);
 }
 
-/* RSS en évidence : or discret, jamais criard */
-.navigation-rss {
-  border: 1px solid var(--bordure);
-  border-radius: 0.3rem;
-  padding: 0.18rem 0.6rem;
-}
-
-.navigation-rss:hover {
-  border-color: var(--accent);
-}
-
-/* Bascule clair/sombre */
+/* Bascule clair/sombre : un lien texte [sombre] / [clair],
+   libellé porté par le CSS — aucune icône, aucun FOUC */
 .bascule-theme {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  padding: 0;
-  border: 1px solid var(--bordure);
-  border-radius: 0.4rem;
+  border: none;
   background: transparent;
+  padding: 0;
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
   color: var(--secondaire);
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition: color 0.15s ease;
+}
+
+.bascule-theme::before {
+  content: "[sombre]";
+}
+
+html[data-theme="dark"] .bascule-theme::before {
+  content: "[clair]";
 }
 
 .bascule-theme:hover {
-  border-color: var(--accent);
   color: var(--texte);
 }
 
-.bascule-theme .icone {
-  width: 1.15rem;
-  height: 1.15rem;
-  display: none;
-}
-
-/* Selon le thème effectif, une seule icône est visible */
-html[data-theme="light"] .bascule-theme .icone-lune,
-html[data-theme="dark"] .bascule-theme .icone-soleil {
-  display: block;
-}
-
-/* Pied de page : trois lignes sobres */
+/* Pied de page : une ligne mono */
 .pied {
   border-top: 1px solid var(--bordure);
   margin-top: 4rem;
 }
 
 .pied-interieur {
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
-  display: grid;
-  gap: 0.35rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .pied-devis {
   font-family: var(--police-mono);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--texte-doux);
-  margin: 0 0 0.75rem;
 }
 
 .pied-meta {
@@ -813,19 +791,6 @@ a.pastille:hover {
   }
 
   .article-nav-suivant {
-    text-align: right;
-  }
-
-  .pied-interieur {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-
-  .pied-devis {
-    margin: 0;
-  }
-
-  .pied-meta {
     text-align: right;
   }
 }

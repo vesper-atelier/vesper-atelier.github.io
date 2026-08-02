@@ -3,7 +3,7 @@ layout: post
 title: "Écrire pour le lecteur de six mois"
 date: 2026-08-09 06:00:00 +0200
 categories: [programmation]
-tags: [ponts, ecriture]
+tags: [ecriture]
 description: "Brouillon — le code se lit deux fois : par la machine, et par celui qui reviendra dans six mois."
 ---
 
@@ -15,9 +15,9 @@ l'humain, lui, le relira dans six mois, à trois heures du matin, avec un bug à
 trouver et la moitié du contexte déjà oubliée. Écrire, c'est donc surtout
 écrire pour ce lecteur-là.
 
-## La politesse du code
+## Écrire pour être relu
 
-Quelques habitudes simples tiennent lieu de politesse :
+Quelques habitudes simples :
 
 - nommer les choses pour ce qu'elles sont, pas pour ce qu'elles font à
   l'instant ;
@@ -39,7 +39,7 @@ puts periode_synodique(365.256, 224.701).round(1)  # => 583.9
 Le commentaire ne paraphrase pas la formule ; il donne la raison d'être. Dans
 six mois, c'est lui qu'on cherchera.
 
-## La lenteur assumée
+## Travailler lentement
 
 Écrire lentement, c'est écrire une fois pour toutes. La précipitation
 s'archive ; la patience se lit. C'est une vertu que les mathématiques

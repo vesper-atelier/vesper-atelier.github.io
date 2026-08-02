@@ -13,12 +13,10 @@
 
 Un **blog de chercheur** qui se lit comme une session de terminal :
 le contenu est le seul décor. Centres d'intérêt : **programmation, LLM,
-mathématiques, mythologie** — et les ponts entre eux.
+mathématiques, mythologie**.
 
-**Thème fondateur : Eosphoros / Hesperos.** L'étoile du matin et l'étoile du
-soir sont la même étoile — Vénus. Les disciplines semblent séparées, elles
-sont une seule lumière. Le site porte ce fil rouge en filigrane, jamais de
-façon criarde — comme un prompt qui attend.
+Le fil conducteur : la rigueur. Chaque article traite un sujet précis, avec
+des sources et des calculs quand cela s'y prête, sans enjolivements.
 
 ## 2. Esthétique TUI (cœur de la v3)
 
@@ -33,7 +31,6 @@ sèche, « le site comme un `ls` de son cerveau ».
 | **Sections « Linked list »** | Un carnet de veille : « trucs qui ont attiré mon œil », liens courts + une ligne de commentaire. |
 | **Blogroll** | La liste des blogs lus — le web comme réseau de connaissances. |
 | **Archives par année** | 2026 → 2013 (ou début du carnet), la profondeur du temps. |
-| **RSS en évidence** | Lien flux en haut, pas de newsletter, pas de popup. |
 
 ## 3. Marque (discrète)
 
@@ -77,27 +74,27 @@ Mode clair/sombre commutable (préférence système + bascule manuelle).
    hiérarchisés, code bien rendu, notes de bas de page). Métadonnées en mono
    (date, catégorie, tags). En-tête façon `cat <fichier>.md` ou chemin de
    fichier discret.
-3. **À propos** : courte présentation, centres d'intérêt, le lien
-   Eosphoros/Hesperos.
-4. **Thèmes / catégories** : programmation, LLM, maths, mythologie, ponts.
+3. **À propos** : courte présentation, centres d'intérêt.
+4. **Catégories** : programmation, LLM, maths, mythologie — elles structurent
+   le permalien (`/:categories/:title/`). Pas de page dédiée par catégorie.
 5. **Contact** : simple (mailto).
-6. **404** (sobre, une ligne — « aucune sortie. »), `robots.txt`, `sitemap.xml`,
-   flux **RSS/Atom** en évidence.
+6. **404** (sobre, une ligne — « aucune sortie. »), `robots.txt`, `sitemap.xml`.
 
 ## 8. Livrables attendus
 
 - Structure Jekyll complète (config, layouts, includes, assets).
 - Tokens CSS + typographies self-hostées + mode clair/sombre.
 - Favicon étoile fine + OG image sobre (typographique).
-- Flux RSS, sitemap, robots, 404.
+- Sitemap, robots, 404.
 - README : lancement local (`jekyll serve`) + déploiement Pages.
 - Code propre, commenté ; contenu éditorial en français, ton sobre.
 
 ## 9. Contenu initial (à conserver)
 
-- **« Eosphoros et Hesperos »** (publié, 02/08) — l'ouverture.
+- **« Vénus : une planète, deux noms »** (publié, 02/08) — l'identification
+  de l'étoile du matin et du soir comme un seul objet.
 - 3 brouillons (`_drafts/`) : *Écrire pour le lecteur de six mois*,
-  *Ce que les LLM disent du langage*, *Le pentagramme de Vénus*.
+  *Ce que les LLM apprennent du langage*, *Le pentagramme de Vénus*.
 - Page À propos avec les centres d'intérêt.
 
 ## 10. Définition de fait

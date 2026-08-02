@@ -3,18 +3,17 @@ layout: post
 title: "Le pentagramme de Vénus"
 date: 2026-08-23 06:00:00 +0200
 categories: [maths]
-tags: [ponts, astronomie, venus]
+tags: [astronomie, venus]
 description: Brouillon — huit ans, cinq cycles, une étoile à cinq branches dessinée dans le ciel.
 math: true
 ---
 
 *Brouillon de démonstration — mathématiques.*
 
-Il y a des coïncidences que les mathématiciens préfèrent appeler des
-structures, tant elles semblent avoir été écrites à l'avance. En voici une :
-la Terre fait le tour du Soleil en un an, Vénus en 224,7 jours. Rapportées
-l'une à l'autre, ces deux périodes produisent une période synodique d'environ
-584 jours — et cinq de ces cycles valent presque exactement huit ans.
+La Terre met environ 365,256 jours à faire le tour du Soleil ; Vénus,
+224,7 jours. Rapportées l'une à l'autre, ces deux périodes produisent une
+période synodique d'environ 584 jours — et cinq de ces cycles valent presque
+exactement huit ans.
 
 ## Le calcul
 
@@ -49,42 +48,35 @@ jours. L'écart est de deux jours et demi sur huit ans — moins de 0,1 %.
 
 ## La figure dans le ciel
 
-Cette quasi-coïncidence a une conséquence visuelle remarquable. Si l'on
-reporte, de huit ans en huit ans, la position de Vénus au moment de ses
-élongations maximales, on obtient une étoile à cinq branches presque parfaite
-— le fameux « pentagramme de Vénus » que les astronomes de l'Antiquité ont
-observé sans pouvoir le nommer ainsi, et que les symbolistes ont ensuite
-chargé de sens.
+Cette quasi-coïncidence a une conséquence visuelle : si l'on reporte, de huit
+ans en huit ans, la position de Vénus au moment de ses élongations maximales,
+on obtient une étoile à cinq branches presque parfaite — le « pentagramme de
+Vénus ».
 
-L'écart qui fait pencher la figure peut s'écrire proprement : chaque période
-synodique décale la configuration d'un résidu angulaire $\Delta\theta$, que
-l'on rapporte au tour complet pour lire la quasi-résonance :
+L'écart se mesure précisément. Chaque période synodique décale la configuration
+d'un résidu angulaire $\Delta\theta$, rapporté au tour complet :
 
 $$ \Delta\theta = 2\pi\left(\frac{5 \cdot T_{\text{syn}}}{8 \cdot T_T} - 1\right) \approx 2\pi \cdot 0{,}0008 $$
 
-Sur huit ans, l'étoile ne se referme donc pas tout à fait : elle laisse une
-ouverture infime, un décalage d'environ $0{,}08\,\%$ — assez lent pour être
-observé comme une figure stable par toute une civilisation.
+Sur huit ans, la figure ne se referme donc pas tout à fait : elle laisse un
+décalage d'environ $0{,}08\,\%$, assez lent pour être observé comme une figure
+stable sur des décennies.
 
-C'est un pont parfait entre les disciplines : un rapport de nombres entiers
-approché (5 pour 8), une figure géométrique, un mythe — la déesse de l'amour
-qui dessine une étoile au-dessus de nos têtes, soir après soir.[^1]
+## Une résonance approchée
 
-## L'approximation qui ouvre les yeux
+Le rapport 5:8 entre les périodes de Vénus et de la Terre est une résonance
+orbitale proche mais non exacte, contrairement à celle, bien réelle, de Pluton
+et Neptune (3:2). Deux jours et demi d'écart sur huit ans suffisent à ce que
+la figure se dégrade lentement — assez lentement pour rester reconnaissable à
+l'échelle d'une vie humaine.[^1]
 
-Ce qui est beau, ici, ce n'est pas l'exactitude : c'est l'approximation.
-Deux jours et demi d'écart sur huit ans suffisent à ce que la figure se
-dégrade lentement — assez lentement pour qu'une civilisation entière ait le
-temps de la voir, de la vénérer, d'écrire dessus des histoires.
-
-Les mathématiques ne sont pas la science de l'exact : elles sont la science
-de ce qui tient, à peu près, assez longtemps pour qu'on y voie une vérité —
-et le ciel, lui, se charge du reste.
+Ce que l'exemple illustre : les mathématiques ne sont pas seulement la science
+de l'exact, mais aussi la science de ce qui tient « à peu près » sur une durée
+donnée — et de la mesure précise de cet à-peu-près.
 
 *— Brouillon. Article complet à venir.*
 
 [^1]: La résonance 5:8 entre les périodes de Vénus et de la Terre est
-      approximative — c'est une résonance orbitale proche mais non exacte,
-      contrairement à celle, bien réelle, de Pluton et Neptune (3:2). La
-      précision du mythe n'a pas besoin de l'exactitude de l'orbite : il lui
-      suffit d'une coïncidence assez belle pour être racontée.
+      approximative — contrairement à celle, bien réelle, de Pluton et Neptune
+      (3:2). La figure observable reste stable assez longtemps pour être
+      reconnue, puis se dégrade.

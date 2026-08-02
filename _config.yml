@@ -5,14 +5,14 @@
 # ═══════════════════════════════════════════════════════════════════
 
 title: "Vesper Atelier"
-tagline: "Eosphoros et Hesperos — la même étoile"
+tagline: "Carnet de recherche — programmation, LLM, mathématiques, mythologie"
 
 description: >-
-  Blog de chercheur sobre et élégant. Programmation, LLM, mathématiques,
-  mythologie — et les ponts entre ces disciplines. Eosphoros et Hesperos
-  sont la même étoile : les savoirs semblent séparés, ils sont une seule lumière.
+  Blog de chercheur sobre et élégant. Programmation, LLM, mathématiques et
+  mythologie : quatre disciplines traitées avec le même sérieux, dans des
+  notes de travail et des analyses sourcées.
 
-# URL absolue du site (utilisée par le flux Atom, le sitemap et les balises OG)
+# URL absolue du site (utilisée par le sitemap et les balises OG)
 url: "https://vesper-atelier.github.io"
 baseurl: ""
 
@@ -23,14 +23,13 @@ author:
   name: "Vesper"
   email: "vesper@vesper-atelier.github.io"
 
-# ── Catégories du carnet (SPECS v3 §7) ───────────────────────────
-# Quatre disciplines + le territoire des ponts (le fil rouge).
+# ── Catégories du carnet ────────────────────────────────────────
+# Les disciplines des articles (utilisées pour le permalien).
 categories:
   - programmation
   - llm
   - maths
   - mythologie
-  - ponts
 
 # ── Moteur Markdown ────────────────────────────────────────────────
 # kramdown (défaut GitHub Pages) : prend en charge les notes de bas de
@@ -45,7 +44,7 @@ kramdown:
 highlighter: rouge
 
 # ── Permaliens ─────────────────────────────────────────────────────
-# Structure par thème : /programmation/titre-de-l-article/
+# Structure par catégorie : /programmation/titre-de-l-article/
 permalink: /:categories/:title/
 
 # ── Contenu ────────────────────────────────────────────────────────
@@ -76,11 +75,6 @@ defaults:
       type: posts
     values:
       layout: post
-  # Pages de thème (programmation, llm, maths, mythologie, ponts)
-  - scope:
-      path: "themes"
-    values:
-      layout: theme
   # Pages génériques (front matter explicite si besoin d'un autre layout)
   - scope:
       path: ""

@@ -233,12 +233,6 @@ html[data-theme="dark"] .bascule-theme::before {
   padding-bottom: 2rem;
 }
 
-.pied-devis {
-  font-family: var(--police-mono);
-  font-size: 0.85rem;
-  color: var(--texte-doux);
-}
-
 .pied-meta {
   margin: 0;
   font-size: 0.85rem;

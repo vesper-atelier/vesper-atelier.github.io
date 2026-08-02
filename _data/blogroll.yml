@@ -2,6 +2,6 @@
 # Vesper Atelier — blogroll (SPECS v3 §2)
 # Les blogs lus : le web comme réseau de connaissances.
 # ─────────────────────────────────────────────────────────────────────
-- nom: "Les carnets lus ici"
-  url: "https://indieweb.org/blogroll"
-  note: "Les blogs qui nourrissent ce carnet — cités au fil des articles, comme des sources."
+# - nom: "Les carnets lus ici"
+#   url: "https://indieweb.org/blogroll"
+#   note: "Les blogs qui nourrissent ce carnet — cités au fil des articles, comme des sources."

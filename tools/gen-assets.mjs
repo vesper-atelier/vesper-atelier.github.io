@@ -137,7 +137,7 @@ async function genererOg(policeMono) {
   const regle = `<rect x="552" y="442" width="96" height="1.6" fill="#C9A227" opacity="0.75"/>`;
 
   // Sous-titre — JetBrains Mono, graisse 400
-  const sous = texteEnChemin(policeMono, "Eosphoros et Hesperos — la même étoile", 600, 512, 28);
+  const sous = texteEnChemin(policeMono, "programmation · llm · maths · mythologie", 600, 512, 28);
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${L}" height="${H}" viewBox="0 0 ${L} ${H}">
   <rect width="${L}" height="${H}" fill="#0A0A1A"/>

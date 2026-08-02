@@ -5,7 +5,4 @@
 User-agent: *
 Allow: /
 
-# Le flux Atom (essentiel pour un blog) est lui aussi accessible
-Allow: /feed.xml
-
 Sitemap: https://vesper-atelier.github.io/sitemap.xml

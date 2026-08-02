@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Accueil
-description: Carnet de recherche — programmation, LLM, mathématiques, mythologie, et les ponts entre eux. La même étoile, le soir et le matin.
+description: Carnet de recherche — programmation, LLM, mathématiques, mythologie. Notes de travail et analyses sourcées.
 ---
 <!-- ═══════════════════════════════════════════════════════════════════
      Accueil TUI — SPECS v3 §2
      La page EST le contenu : pas de hero, pas d'image, juste des listes.
-     Chaque section est une commande : ls ./articles, ./liens, ./blogroll,
-     ./archives, ./ailleurs. Une ligne par entrée, zéro habillage.
+     Chaque section est une commande : ls ./articles, ./liens.
+     Une ligne par entrée, zéro habillage.
      ═══════════════════════════════════════════════════════════════════ -->
 
 <section class="accueil" aria-label="Accueil du carnet">
@@ -20,7 +20,7 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
     <ul class="tui-liste">
       {% for article in site.posts %}
       <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ article.url | relative_url }}">{{ article.title }}</a>{% if article.description %}<span class="tui-note"> — {{ article.description }}</span>{% endif %}
+        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ article.url | relative_url }}">{{ article.title }}</a>{% if article.description %}<span class="tui-note"> — {{ article.description }}</span>{% endif %} <span class="tui-meta">({{ article.date | date: "%Y-%m-%d" }})</span>
       </li>
       {% endfor %}
     </ul>
@@ -29,7 +29,8 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
     {% endif %}
   </section>
 
-  <!-- ── Linked list : carnet de veille (lien + une ligne de commentaire) ── -->
+  <!-- ── Liens externes : veille + blogs lus (lien + une ligne) ── -->
+  {% if site.data.liens.size > 0 or site.data.blogroll.size > 0 %}
   <section class="tui-section" aria-labelledby="section-liens">
     <h2 class="tui-titre" id="section-liens">
       <span class="tui-prompt-sous" aria-hidden="true">$</span> ls ./liens
@@ -40,15 +41,6 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
         <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ lien.url }}">{{ lien.titre }}</a><span class="tui-note"> — {{ lien.note }}</span>
       </li>
       {% endfor %}
-    </ul>
-  </section>
-
-  <!-- ── Blogroll : le web comme réseau de connaissances ── -->
-  <section class="tui-section" aria-labelledby="section-blogroll">
-    <h2 class="tui-titre" id="section-blogroll">
-      <span class="tui-prompt-sous" aria-hidden="true">$</span> ls ./blogroll
-    </h2>
-    <ul class="tui-liste">
       {% for blog in site.data.blogroll %}
       <li class="tui-ligne-veille">
         <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ blog.url }}">{{ blog.nom }}</a><span class="tui-note"> — {{ blog.note }}</span>
@@ -56,43 +48,5 @@ description: Carnet de recherche — programmation, LLM, mathématiques, mytholo
       {% endfor %}
     </ul>
   </section>
-
-  <!-- ── Archives par année : la profondeur du temps ── -->
-  <section class="tui-section" aria-labelledby="section-archives">
-    <h2 class="tui-titre" id="section-archives">
-      <span class="tui-prompt-sous" aria-hidden="true">$</span> ls ./archives
-    </h2>
-    {% if site.posts.size > 0 %}
-    <ul class="tui-liste">
-      {% for article in site.posts %}
-      <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ article.url | relative_url }}">{{ article.title }}</a> <span class="tui-meta">({{ article.date | date: "%Y-%m-%d" }})</span>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p class="tui-vide">Le carnet est jeune : les années s'écriront ici.</p>
-    {% endif %}
-  </section>
-
-  <!-- ── Ailleurs : réseaux, courriel, flux ── -->
-  <section class="tui-section" aria-labelledby="section-ailleurs">
-    <h2 class="tui-titre" id="section-ailleurs">
-      <span class="tui-prompt-sous" aria-hidden="true">$</span> ls ./ailleurs
-    </h2>
-    <ul class="tui-liste">
-      <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ '/feed.xml' | relative_url }}">Flux RSS</a><span class="tui-note"> — le carnet, sans intermédiaire</span>
-      </li>
-      <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ '/about/' | relative_url }}">À propos</a><span class="tui-note"> — qui écrit, pourquoi, et l'étoile qui relie</span>
-      </li>
-      <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="{{ '/themes/' | relative_url }}">Thèmes</a><span class="tui-note"> — programmation · llm · maths · mythologie · ponts</span>
-      </li>
-      <li class="tui-ligne-veille">
-        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="mailto:vesper@vesper-atelier.github.io">Courriel</a><span class="tui-note"> — vesper@vesper-atelier.github.io</span>
-      </li>
-    </ul>
-  </section>
+  {% endif %}
 </section>

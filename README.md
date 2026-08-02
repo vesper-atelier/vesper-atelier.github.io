@@ -1,11 +1,8 @@
 # Vesper Atelier
 
 Blog de chercheur sobre et élégant — programmation, LLM, mathématiques,
-mythologie, et les ponts entre ces disciplines. **Thème TUI** : l'accueil est
-une liste de liens, comme un `ls` de son cerveau.
-
-> Eosphoros et Hesperos sont la même étoile. Les savoirs semblent séparés :
-> ils sont une seule lumière.
+mythologie. **Thème TUI** : l'accueil est une liste de liens, comme un `ls`
+de son cerveau.
 
 Spécification : [SPECS.md](SPECS.md) (v3, thème TUI). Les versions
 précédentes sont archivées : `agent-v1` (v1 vitrine) · `feature/blog-specs-v2`
@@ -16,17 +13,16 @@ précédentes sont archivées : `agent-v1` (v1 vitrine) · `feature/blog-specs-v
 ```
 _config.yml          Configuration Jekyll (lang fr, fuseau Paris, catégories, permaliens)
 _includes/           head, header (prompt $), footer, liste d'articles TUI, date fr
-_layouts/            default, page, post (lecture ~70ch, en-tête `cat <fichier>.md`), theme
+_layouts/            default, page, post (lecture ~70ch, en-tête `cat <fichier>.md`)
 _data/               liens.yml (linked list) · blogroll.yml (blogs lus)
 _posts/              Articles publiés (Markdown)
 _drafts/             Brouillons (visibles via `jekyll serve --drafts`)
-themes/              Pages de thème : programmation, llm, maths, mythologie, ponts
-index.html           Accueil-liste TUI : articles · liens · blogroll · archives · ailleurs
+index.html           Accueil-liste TUI : articles · liens
 assets/css/main.css  Tokens CSS, thème clair/sombre, esthétique terminal, AA
 assets/js/main.js    Bascule clair/sombre (zéro dépendance)
 assets/fonts/        JetBrains Mono en woff2, self-hosted (subset latin)
 assets/img/          Favicons étoile (SVG/PNG/ICO), image OG 1200×630
-feed.xml             Flux Atom ; sitemap.xml ; robots.txt ; 404.html
+sitemap.xml          Sitemap ; robots.txt ; 404.html
 ```
 
 ## Lancer le site en local
@@ -68,15 +64,15 @@ régénéré automatiquement à chaque publication.
 - **Linked list** : `_data/liens.yml` — le carnet de veille de l'accueil.
 - **Blogroll** : `_data/blogroll.yml` — les blogs lus.
 - **Contenu** : un article = un fichier `_posts/AAAA-MM-JJ-titre.md` avec les
-  champs `categories` (programmation, llm, maths, mythologie) et `tags`
-  (dont `ponts`, le fil rouge).
+  champs `categories` (programmation, llm, maths, mythologie) et `tags`. Les
+  catégories structurent le permalien (`/:categories/:title/`).
 
 ## Feuille de route
 
 - [x] Accueil-liste TUI (articles · liens · blogroll · archives · ailleurs)
 - [x] Typographie full terminal (JetBrains Mono partout, sans curseur, listes sèches)
 - [x] Mode clair/sombre (préférence système + bascule manuelle, mémorisée)
-- [x] Article d'ouverture « Eosphoros et Hesperos » + 3 brouillons
+- [x] Article d'ouverture « Vénus : une planète, deux noms » + 3 brouillons
 - [x] Self-hosting des polices en woff2 (subset latin) — SPECS §5
 - [ ] Rendu comparé à chsmc.org (fidélité d'esprit, pas de copie)
 - [ ] Premier build GitHub Pages (après fusion dans `main`)

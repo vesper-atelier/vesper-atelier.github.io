@@ -9,11 +9,5 @@
   <url><loc>https://vesper-atelier.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://vesper-atelier.github.io/about/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://vesper-atelier.github.io/contact/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/programmation/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/llm/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/maths/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/mythologie/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vesper-atelier.github.io/themes/ponts/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://vesper-atelier.github.io/mythologie/eosphoros-et-hesperos/</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
 </urlset>

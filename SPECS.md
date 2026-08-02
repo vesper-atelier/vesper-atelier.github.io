@@ -3,6 +3,8 @@
 > Spécification encadrant l'agent de codage pour la construction du site.
 > Direction v3 — 02/08/2026 : blog sobre, contenu-first, **esthétique TUI**
 > (inspirée de chsmc.org — Chase McCoy, design engineer chez Anthropic).
+> **v3.1 — refonte full terminal** (02/08/2026, branche `feature/blog-v3-tui`) :
+> typographie 100 % JetBrains Mono, curseur supprimé, listes sans filets.
 > v1 (site vitrine) archivée sur `agent-v1` · v2 (blog sobre) sur `feature/blog-specs-v2`.
 
 ---
@@ -26,8 +28,8 @@ sèche, « le site comme un `ls` de son cerveau ».
 | Principe | Application |
 |---|---|
 | **Accueil = liste de liens** | Pas de hero, pas de slider, pas d'image d'accueil. Des liens vers les sections, articles, réseaux. La page EST le contenu. |
-| **Esthétique terminal** | Sections précédées d'un prompt discret (`~$ ` ou `> `), bordures fines, structure en listes sèches. |
-| **Curseur d'accent** | La couleur d'accent (or) utilisée avec parcimonie : lien au survol, curseur, point d'attention. |
+| **Esthétique terminal** | Sections précédées d'un prompt discret (`~$ ` ou `> `), pas de bordures de lignes, structure en listes sèches. Une ligne par entrée. |
+| **Accent discret** | La couleur d'accent (or) utilisée avec parcimonie : liens au survol, prompts, puces. **Pas de curseur animé.** |
 | **Sections « Linked list »** | Un carnet de veille : « trucs qui ont attiré mon œil », liens courts + une ligne de commentaire. |
 | **Blogroll** | La liste des blogs lus — le web comme réseau de connaissances. |
 | **Archives par année** | 2026 → 2013 (ou début du carnet), la profondeur du temps. |
@@ -53,11 +55,11 @@ Mode clair/sombre commutable (préférence système + bascule manuelle).
 
 ## 5. Typographie
 
-- Titres : serif élégante (Cormorant Garamond) — fallback `Georgia, serif`.
-- Corps : serif lisible (Source Serif 4 ou Lora) — l'âme « chercheur/imprimé ».
-- Mono : JetBrains Mono pour les métadonnées, prompts, dates, code — le souffle
-  terminal. C'est le mono qui porte l'esthétique TUI.
-- Self-hosted woff2, `font-display: swap`.
+- **Une seule famille** : JetBrains Mono (400/500/700 + italiques), partout —
+  titres, corps, métadonnées, code. C'est la densité qui porte l'esthétique TUI.
+- Hiérarchie par le poids et les préfixes « # » : h1 1,5rem/700, h2 1,25rem/700,
+  h3 1,1rem/700. Racine 15px, line-height 1,6.
+- Self-hosted woff2 (subset latin), `font-display: swap`.
 
 ## 6. Stack et hébergement
 

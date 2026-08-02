@@ -1,0 +1,25 @@
+/* ───────────────────────────────────────────────────────────────────
+   Vesper Atelier — JetBrains Mono, self-hosted (woff2)
+   Licence : SIL Open Font License 1.1 (OFL-1.1)
+   Source : Google Fonts — variable font, subset latin.
+
+   Deux fichiers variables couvrent les graisses du site :
+     - normal : 400 (corps), 500 (liens), 700 (titres)
+     - italic : 400, 700 (citations, commentaires de code)
+   font-display: swap — SPECS §5.
+   ─────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("jetbrains-mono-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("jetbrains-mono-italic.woff2") format("woff2");
+}

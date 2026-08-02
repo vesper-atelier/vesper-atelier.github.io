@@ -37,11 +37,12 @@
 <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
 
 <!-- ── Typographie : JetBrains Mono, seule famille du site (thème
-     full terminal). Google Fonts en attendant le self-hosting woff2
-     (itération 5, voir README « Feuille de route ») ── -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+     full terminal), self-hosted en woff2 (SPECS §5) ── -->
+<link rel="stylesheet" href="{{ '/assets/fonts/jetbrains-mono.css' | relative_url }}">
+
+<!-- ── Couleur de thème navigateur : une par mode ── -->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F2">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A1A">
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 

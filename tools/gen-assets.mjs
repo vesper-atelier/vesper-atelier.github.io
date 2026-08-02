@@ -120,24 +120,24 @@ async function genererFavicons() {
 }
 
 /* ── Image OG 1200×630 (typographique) ───────────────────────────── */
-async function genererOg(policeTitres, policeCorps) {
+async function genererOg(policeMono) {
   const L = 1200, H = 630;
 
   const etoile = `<g transform="translate(600 238) scale(2.1)"><path d="${TRAIT_ETOILE}" fill="#C9A227"/></g>`;
 
-  // Titre — Cormorant Garamond (graisse 600 quand la variation le permet)
-  let titres = policeTitres;
+  // Titre — JetBrains Mono, graisse 700 (thème full terminal)
+  let titres = policeMono;
   try {
-    const variante = policeTitres.getVariation({ wght: 600 });
+    const variante = policeMono.getVariation({ wght: 700 });
     if (variante) titres = variante;
   } catch { /* instance par défaut : acceptable */ }
-  const titre = texteEnChemin(titres, "Vesper Atelier", 600, 396, 96);
+  const titre = texteEnChemin(titres, "Vesper Atelier", 600, 396, 92);
 
   // Règle d'or, fine
   const regle = `<rect x="552" y="442" width="96" height="1.6" fill="#C9A227" opacity="0.75"/>`;
 
-  // Sous-titre — Source Serif 4
-  const sous = texteEnChemin(policeCorps, "Eosphoros et Hesperos — la même étoile", 600, 512, 30);
+  // Sous-titre — JetBrains Mono, graisse 400
+  const sous = texteEnChemin(policeMono, "Eosphoros et Hesperos — la même étoile", 600, 512, 28);
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${L}" height="${H}" viewBox="0 0 ${L} ${H}">
   <rect width="${L}" height="${H}" fill="#0A0A1A"/>
@@ -158,20 +158,15 @@ async function genererOg(policeTitres, policeCorps) {
 async function main() {
   await fs.mkdir(IMG, { recursive: true });
   console.log("Polices (OFL, google/fonts) :");
-  const cormorant = await telecharger(
-    "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/CormorantGaramond%5Bwght%5D.ttf",
-    "CormorantGaramond.ttf"
-  );
-  const sourceSerif = await telecharger(
-    "https://raw.githubusercontent.com/google/fonts/main/ofl/sourceserif4/SourceSerif4%5Bopsz%2Cwght%5D.ttf",
-    "SourceSerif4.ttf"
+  const jetbrains = await telecharger(
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+    "JetBrainsMono.ttf"
   );
 
   console.log("Génération :");
-  const policeTitres = opentype.loadSync(cormorant);
-  const policeCorps = opentype.loadSync(sourceSerif);
+  const policeMono = opentype.loadSync(jetbrains);
   await genererFavicons();
-  await genererOg(policeTitres, policeCorps);
+  await genererOg(policeMono);
   console.log("Terminé.");
 }
 

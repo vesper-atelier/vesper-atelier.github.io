@@ -24,6 +24,7 @@ themes/              Pages de thème : programmation, llm, maths, mythologie, po
 index.html           Accueil-liste TUI : articles · liens · blogroll · archives · ailleurs
 assets/css/main.css  Tokens CSS, thème clair/sombre, esthétique terminal, AA
 assets/js/main.js    Bascule clair/sombre (zéro dépendance)
+assets/fonts/        JetBrains Mono en woff2, self-hosted (subset latin)
 assets/img/          Favicons étoile (SVG/PNG/ICO), image OG 1200×630
 feed.xml             Flux Atom ; sitemap.xml ; robots.txt ; 404.html
 ```
@@ -62,8 +63,8 @@ régénéré automatiquement à chaque publication.
 
 - **Couleurs** : tokens en tête de `assets/css/main.css` (`--fond`, `--texte`,
   `--accent`, `--secondaire`…), déclinés en clair et sombre.
-- **Typographies** : titres Cormorant Garamond, corps Source Serif 4, mono
-  JetBrains Mono — chargées via Google Fonts (`_includes/head.html`).
+- **Typographie** : JetBrains Mono partout (thème full terminal), self-hosted
+  en woff2 (`assets/fonts/`), déclinée en graisses 400/500/700 + italiques.
 - **Linked list** : `_data/liens.yml` — le carnet de veille de l'accueil.
 - **Blogroll** : `_data/blogroll.yml` — les blogs lus.
 - **Contenu** : un article = un fichier `_posts/AAAA-MM-JJ-titre.md` avec les
@@ -73,10 +74,10 @@ régénéré automatiquement à chaque publication.
 ## Feuille de route
 
 - [x] Accueil-liste TUI (articles · liens · blogroll · archives · ailleurs)
-- [x] Prompt `~$` discret + curseur d'accent, bordures fines, listes sèches
+- [x] Typographie full terminal (JetBrains Mono partout, sans curseur, listes sèches)
 - [x] Mode clair/sombre (préférence système + bascule manuelle, mémorisée)
 - [x] Article d'ouverture « Eosphoros et Hesperos » + 3 brouillons
-- [ ] Self-hosting des polices en woff2 (au lieu de Google Fonts) — SPECS §5
+- [x] Self-hosting des polices en woff2 (subset latin) — SPECS §5
 - [ ] Rendu comparé à chsmc.org (fidélité d'esprit, pas de copie)
 - [ ] Premier build GitHub Pages (après fusion dans `main`)
 - [ ] Vérification Lighthouse ≥ 90 sur le site publié

@@ -4,10 +4,10 @@
 # pour la page des ponts, par étiquette (front matter `tag: ponts`).
 layout: default
 ---
-<article class="page">
+<section class="accueil">
   <header class="page-entete">
     <p class="page-chemin" aria-hidden="true">
-      <span class="article-chemin-prompt">~$</span>
+      <span class="article-chemin-prompt">$</span>
       <span class="article-chemin-fichier">cat {{ page.path }}</span>
     </p>
     <p class="surtitre">Thème</p>
@@ -25,8 +25,10 @@ layout: default
     {% assign articles = site.posts | where_exp: "p", "p.categories contains page.theme" %}
   {% endif %}
 
-  <section aria-label="Articles du thème {{ page.title }}" class="theme-articles">
-    <h2 class="tui-titre"><span class="tui-prompt-sous" aria-hidden="true">~$</span> ls ./articles</h2>
+  <section class="tui-section" aria-labelledby="section-articles">
+    <h2 class="tui-titre" id="section-articles">
+      <span class="tui-prompt-sous" aria-hidden="true">$</span> ls ./articles
+    </h2>
     {% include post-list.html posts=articles %}
   </section>
-</article>
+</section>

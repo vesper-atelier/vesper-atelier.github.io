@@ -28,7 +28,7 @@ sèche, « le site comme un `ls` de son cerveau ».
 | Principe | Application |
 |---|---|
 | **Accueil = liste de liens** | Pas de hero, pas de slider, pas d'image d'accueil. Des liens vers les sections, articles, réseaux. La page EST le contenu. |
-| **Esthétique terminal** | Sections précédées d'un prompt discret (`~$ ` ou `> `), pas de bordures de lignes, structure en listes sèches. Une ligne par entrée. |
+| **Esthétique terminal** | Sections précédées d'un prompt discret (`$ ` ou `> `), pas de bordures de lignes, structure en listes sèches. Une ligne par entrée. |
 | **Accent discret** | La couleur d'accent (or) utilisée avec parcimonie : liens au survol, prompts, puces. **Pas de curseur animé.** |
 | **Sections « Linked list »** | Un carnet de veille : « trucs qui ont attiré mon œil », liens courts + une ligne de commentaire. |
 | **Blogroll** | La liste des blogs lus — le web comme réseau de connaissances. |
@@ -71,7 +71,7 @@ Mode clair/sombre commutable (préférence système + bascule manuelle).
 ## 7. Pages et structure (v3)
 
 1. **Accueil** (`index.html`) : liste de liens en sections — Derniers articles,
-   Liens (linked list), Blogroll, Archives, Ailleurs (réseaux). Prompt `~$` en
+   Liens (linked list), Blogroll, Archives, Ailleurs (réseaux). Prompt `$` en
    tête. Tri par date, extraits courts.
 2. **Article type** : layout de lecture soigné (mesure ~70ch, titres
    hiérarchisés, code bien rendu, notes de bas de page). Métadonnées en mono

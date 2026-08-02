@@ -2,26 +2,6 @@
 # Vesper Atelier — blogroll (SPECS v3 §2)
 # Les blogs lus : le web comme réseau de connaissances.
 # ─────────────────────────────────────────────────────────────────────
-- nom: "Chase McCoy"
-  url: "https://chsmc.org"
-  note: "Design engineer — l'accueil-liste qui a inspiré ce carnet."
-
-- nom: "Simon Willison"
-  url: "https://simonwillison.net"
-  note: "LLM, outils, veille — la régularité comme méthode."
-
-- nom: "Julia Evans"
-  url: "https://jvns.ca"
-  note: "Programmation : rendre l'obscur lisible."
-
-- nom: "Dan Luu"
-  url: "https://danluu.com"
-  note: "Essais longs, données à l'appui, zéro fioriture."
-
-- nom: "Gwern Branwen"
-  url: "https://gwern.net"
-  note: "Le carnet de recherche dans toute sa radicalité."
-
-- nom: "Maciej Cegłowski"
-  url: "https://idlewords.com"
-  note: "Écriture nette sur le web, la technique et ce qu'on en fait."
+- nom: "Les carnets lus ici"
+  url: "https://indieweb.org/blogroll"
+  note: "Les blogs qui nourrissent ce carnet — cités au fil des articles, comme des sources."

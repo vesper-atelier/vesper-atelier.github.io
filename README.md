@@ -15,7 +15,7 @@ précédentes sont archivées : `agent-v1` (v1 vitrine) · `feature/blog-specs-v
 
 ```
 _config.yml          Configuration Jekyll (lang fr, fuseau Paris, catégories, permaliens)
-_includes/           head, header (prompt ~$), footer, liste d'articles TUI, date fr
+_includes/           head, header (prompt $), footer, liste d'articles TUI, date fr
 _layouts/            default, page, post (lecture ~70ch, en-tête `cat <fichier>.md`), theme
 _data/               liens.yml (linked list) · blogroll.yml (blogs lus)
 _posts/              Articles publiés (Markdown)

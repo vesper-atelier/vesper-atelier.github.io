@@ -8,14 +8,22 @@ soi d'abord — et pour le lecteur qui passe par là.
 
 ## Centres d'intérêt
 
-- **Programmation** — l'artisanat du code, la lenteur assumée, les programmes
-  qui se lisent comme des essais. La précision comme politesse.
-- **LLM** — les modèles de langage comme miroirs statistiques du langage humain :
-  ce qu'ils nous apprennent de nos propres mots, de nos noms, de nos mythes.
-- **Mathématiques** — les structures qui émergent quand on regarde assez longtemps :
-  périodes, cycles, symétries. L'astronomie y tient une place particulière.
-- **Mythologie** — les récits que les civilisations se sont donnés pour nommer
-  le ciel. Vénus, l'étoile double, y est un fil d'or.
+<section class="tui-section">
+    <ul class="tui-liste">
+      <li class="tui-ligne-veille">
+        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="/themes/programmation/">Programmation</a><span class="tui-note"> — l'artisanat du code, la lenteur assumée, les programmes qui se lisent comme des essais.</span>
+      </li>
+      <li class="tui-ligne-veille">
+        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="/themes/llm/">LLM</a><span class="tui-note"> — les modèles de langage comme miroirs statistiques du langage humain.</span>
+      </li>
+      <li class="tui-ligne-veille">
+        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="/themes/maths/">Mathématiques</a><span class="tui-note"> — les structures qui émergent quand on regarde assez longtemps : périodes, cycles, symétries.</span>
+      </li>
+      <li class="tui-ligne-veille">
+        <span class="tui-puce" aria-hidden="true">*</span><a class="tui-lien" href="/themes/mythologie/">Mythologie</a><span class="tui-note"> — les récits que les civilisations se sont donnés pour nommer le ciel.</span>
+      </li>
+    </ul>
+</section>
 
 ## Le lien Eosphoros / Hesperos
 

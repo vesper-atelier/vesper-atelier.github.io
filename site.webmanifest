@@ -1,0 +1,10 @@
+{
+  "name": "Vesper Atelier",
+  "short_name": "Vesper",
+  "description": "L'atelier numérique de l'étoile du soir.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A1A",
+  "theme_color": "#0A0A1A",
+  "icons": [{ "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

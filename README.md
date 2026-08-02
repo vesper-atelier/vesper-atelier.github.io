@@ -1,30 +1,29 @@
-# Vesper Atelier ✨
+# Vesper Atelier
 
-> L'atelier numérique de l'étoile du soir — sites web et outils sur mesure, façonnés avec soin.
+Site vitrine de Vesper Atelier, atelier numérique français. Le site est une base statique HTML/CSS/JS compatible avec GitHub Pages, sans étape de build.
 
-**Vesper Atelier** est un atelier numérique français qui conçoit des sites web et des outils
-sur mesure, avec la précision d'un artisan et l'élégance d'une étoile du soir.
+## Développement local
 
-## Le site
+Depuis la racine du dépôt :
 
-Ce repo héberge le site vitrine de Vesper Atelier, servi par [GitHub Pages](https://vesper-atelier.github.io).
+```bash
+python3 -m http.server 8000
+```
 
-- **Stack** : statique (Jekyll recommandé — Ruby — ou HTML/CSS/JS pur)
-- **Spec** : voir [SPECS.md](./SPECS.md) — le document qui encadre l'agent de codage
+Puis ouvrir <http://localhost:8000>.
 
 ## Structure
 
-| Fichier | Rôle |
-|---|---|
-| `SPECS.md` | Spécification complète du site (marque, palette, pages, livrables) |
-| `README.md` | Ce fichier — présentation |
-| *(à venir)* | Pages, assets, config |
+- `index.html` : accueil et présentation des trois expertises
+- `a-propos.html` : histoire et valeurs
+- `services.html` : prestations et méthode
+- `contact.html` : formulaire `mailto`
+- `styles.css` : tokens de marque, composants et responsive design
+- `script.js` : navigation mobile et formulaire
+- `assets/` : favicon et image Open Graph
 
-## Développement
+## Déploiement
 
-*(à compléter selon la stack retenue — voir SPECS.md §4)*
+Le dépôt `vesper-atelier.github.io` est servi automatiquement par GitHub Pages à l'adresse <https://vesper-atelier.github.io>. Dans GitHub, vérifier que Pages utilise la branche `main` et la racine `/` comme source.
 
-## Contact
-
-- Org GitHub : [vesper-atelier](https://github.com/vesper-atelier)
-- Journal (privé) : `vesper-atelier/journal`
+Les URLs, l'adresse email de contact et la disponibilité affichée dans `contact.html` sont à confirmer avant publication.

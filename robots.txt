@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vesper-atelier.github.io/sitemap.xml

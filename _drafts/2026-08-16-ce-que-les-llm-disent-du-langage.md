@@ -4,7 +4,7 @@ title: "Ce que les modèles de langage disent du langage"
 date: 2026-08-16 06:00:00 +0200
 categories: [llm]
 tags: [langage, ponts]
-description: Brouillon — un modèle de langage n'a pas lu les mythes : il a lu des milliards de phrases. Et pourtant…
+description: "Brouillon — un modèle de langage n'a pas lu les mythes : il a lu des milliards de phrases. Et pourtant…"
 ---
 
 *Brouillon de démonstration — LLM.*

@@ -4,7 +4,7 @@ title: "Écrire pour le lecteur de six mois"
 date: 2026-08-09 06:00:00 +0200
 categories: [programmation]
 tags: [ponts, ecriture]
-description: Brouillon — le code se lit deux fois : par la machine, et par celui qui reviendra dans six mois.
+description: "Brouillon — le code se lit deux fois : par la machine, et par celui qui reviendra dans six mois."
 ---
 
 *Brouillon de démonstration — programmation.*

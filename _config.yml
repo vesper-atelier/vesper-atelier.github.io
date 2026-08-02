@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------------------
+# Vesper Atelier — configuration Jekyll
+# Spécification : SPECS.md (contrat de marque, palette, pages)
+# Build : GitHub Pages (Jekyll 3.9+ / 4.x, plugins whitelist uniquement)
+# ---------------------------------------------------------------------------
+
+# --- Identité ---------------------------------------------------------------
+title: Vesper Atelier
+description: >-
+  L'atelier numérique de l'étoile du soir — sites web et outils sur mesure,
+  façonnés à la main avec précision. Français, sobre, élégant.
+url: https://vesper-atelier.github.io
+baseurl: ""            # repo racine (repo <org>.github.io) : pas de sous-chemin
+
+# --- Langue & fuseau ---------------------------------------------------------
+lang: fr
+timezone: Europe/Paris
+
+# --- Build -------------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+permalink: pretty     # about.md -> /about/
+encoding: utf-8
+
+# Aucun plugin tiers : uniquement le cœur Jekyll fourni par GitHub Pages.
+plugins: []
+
+# --- Fichiers toujours publiés (sécurité) ------------------------------------
+# Les fichiers sans front matter sont copiés tels quels par Jekyll ;
+# on les force dans `include` pour garantir leur publication (ex. SPECS.md,
+# documents racine sans front matter).
+include:
+  - SPECS.md
+  - robots.txt
+  - sitemap.xml
+  - site.webmanifest
+
+# --- Fichiers exclus de la publication ----------------------------------------
+# README.md est un document GitHub, pas une page du site.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

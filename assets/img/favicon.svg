@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon Vesper Atelier — étoile à 4 branches (symbole de marque, SPECS §1)
+     Rubis sur fond nuit ; l'or est réservé à la version claire si besoin. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0A0A1A"/>
+  <!-- Étoile à 4 branches, courbes concaves (forme « étincelle ») -->
+  <path d="M32 4 C34.5 21 43 29.5 60 32 C43 34.5 34.5 43 32 60 C29.5 43 21 34.5 4 32 C21 29.5 29.5 21 32 4 Z"
+        fill="#E0115F"/>
+  <!-- Cœur doré discret, reflet (SPECS : or = reflets, étoile) -->
+  <path d="M32 18 C33.2 26 38 30.8 46 32 C38 33.2 33.2 38 32 46 C30.8 38 26 33.2 18 32 C26 30.8 30.8 26 32 18 Z"
+        fill="#C9A227" opacity="0.85"/>
+</svg>

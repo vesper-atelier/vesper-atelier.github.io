@@ -1,0 +1,7 @@
+# Vesper Atelier — robots.txt
+# Le site est public et intégralement indexable.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://vesper-atelier.github.io/sitemap.xml

@@ -1,0 +1,9 @@
+# Jekyll — artefacts de build local (GitHub Pages reconstruit de son côté)
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Bundler
+vendor/
+.bundle/
+Gemfile.lock

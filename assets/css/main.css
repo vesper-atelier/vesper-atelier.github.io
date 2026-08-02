@@ -1,0 +1,757 @@
+/* ==========================================================================
+   Vesper Atelier — feuille de style principale
+   --------------------------------------------------------------------------
+   Palette (SPECS §2) — exprimée en variables CSS, jamais en dur :
+     --nuit   #0A0A1A  fond principal
+     --violet #201050  dégradés, secondaire
+     --ruby   #E0115F  accents uniquement (jamais de fond massif)
+     --or     #C9A227  reflets, étoile, survol
+     --ivoire #F5F0E8  texte sur fond sombre
+   Typographies (SPECS §3) : serif Cormorant Garamond (titres),
+   sans-serif Inter (corps), mono JetBrains Mono (détails techniques).
+   Contraintes : mobile-first, contrastes AA minimum, zéro dépendance.
+   ========================================================================== */
+
+/* --- Tokens --------------------------------------------------------------- */
+:root {
+  /* Palette */
+  --nuit:        #0A0A1A;
+  --violet:      #201050;
+  --ruby:        #E0115F;
+  --or:          #C9A227;
+  --ivoire:      #F5F0E8;
+
+  /* Déclinaisons calculées (surfaces, bordures, états) */
+  --ivoire-doux:  #F5F0E8;  /* texte courant (AA 17:1 sur --nuit) */
+  --ivoire-att:   #C9C2B4;  /* texte secondaire (AA 10:1 sur --nuit) */
+  --ruby-clair:   #FF4D8D;  /* rubis éclairci : lien/texte rubis AA (8,4:1 sur --nuit) */
+  --or-att:       #E6C55C;  /* or éclairci : texte or AA (10,5:1 sur --nuit) */
+  --ligne:        rgba(245, 240, 232, 0.12);  /* bordures fines */
+  --ligne-forte:  rgba(245, 240, 232, 0.24);
+  --surface:      rgba(32, 16, 80, 0.45);     /* cartes sur fond nuit */
+  --surface-2:    rgba(32, 16, 80, 0.70);
+
+  /* Typographies — fallbacks conformes SPECS §3 */
+  --serif: "Cormorant Garamond", Garamond, Georgia, "Times New Roman", serif;
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Rythme */
+  --rayon:       14px;
+  --transition:  180ms ease;
+  --largeur-max: 1120px;
+}
+
+/* --- Base ----------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--nuit);
+  /* Léger dégradé violet très discret en haut de page — ambiance, pas d'effet */
+  background-image: radial-gradient(1200px 520px at 50% -220px,
+    rgba(32, 16, 80, 0.55), transparent 70%);
+  background-repeat: no-repeat;
+  color: var(--ivoire);
+  font-family: var(--sans);
+  font-size: 1.0625rem;   /* 17 px — confortable sur mobile comme sur desktop */
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--or-att);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--or);
+}
+
+:focus-visible {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Lien d'évitement (accessibilité clavier) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ivoire);
+  color: var(--nuit);
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 var(--rayon) 0;
+  z-index: 100;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* --- Conteneurs ------------------------------------------------------------ */
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur-max);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.conteneur-etroit {
+  max-width: 720px;
+}
+
+.centre {
+  text-align: center;
+}
+
+/* --- En-tête --------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(10, 10, 26, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ligne);
+}
+
+.en-tete-interieur {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.85rem;
+}
+
+.marque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ivoire);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.marque-etoile {
+  color: var(--or);           /* l'étoile brille en or sur la nuit */
+  flex: none;
+}
+
+.marque:hover .marque-etoile,
+.marque:focus-visible .marque-etoile {
+  color: var(--ruby-clair);   /* l'étoile rosit au survol — clin d'œil rubis */
+}
+
+.marque-nom {
+  white-space: nowrap;
+}
+
+.nav-principale ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-principale a {
+  display: inline-block;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  color: var(--ivoire-att);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.nav-principale a:hover,
+.nav-principale a:focus-visible {
+  color: var(--ivoire);
+  background-color: var(--surface-2);
+}
+
+.nav-principale a[aria-current="page"] {
+  color: var(--ivoire);
+  background-color: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--ligne-forte);
+}
+
+/* --- Hero (accueil) -------------------------------------------------------- */
+.hero {
+  padding-block: clamp(4rem, 12vh, 7.5rem) clamp(3.5rem, 9vh, 6rem);
+  text-align: center;
+}
+
+.hero-sur-titre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+  color: var(--ruby-clair);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.etoile-deco {
+  color: var(--or);
+}
+
+.hero-titre {
+  margin: 0 0 1.5rem;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  color: var(--ivoire);
+}
+
+/* Rubis réservé à l'accent fin : le point final du titre */
+.hero-titre em {
+  font-style: normal;
+  color: var(--ruby-clair);
+}
+
+.hero-texte {
+  max-width: 34em;
+  margin: 0 auto 2.25rem;
+  color: var(--ivoire-att);
+  font-size: 1.15rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+/* --- Boutons --------------------------------------------------------------- */
+.bouton {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform var(--transition), box-shadow var(--transition),
+              background-color var(--transition), color var(--transition);
+}
+
+.bouton-primaire {
+  background-color: var(--ruby);
+  color: var(--ivoire);
+  border-color: var(--ruby);
+  /* contraste du libellé ivoire sur rubis : 4,6:1 — AA */
+}
+
+.bouton-primaire:hover,
+.bouton-primaire:focus-visible {
+  background-color: #C00E52;  /* rubis assombri : ivoire 6,4:1 — AA+ */
+  color: var(--ivoire);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(224, 17, 95, 0.35);
+}
+
+.bouton-secondaire {
+  background-color: transparent;
+  color: var(--ivoire);
+  border-color: var(--ligne-forte);
+}
+
+.bouton-secondaire:hover,
+.bouton-secondaire:focus-visible {
+  border-color: var(--or);
+  color: var(--or);
+}
+
+/* --- Sections -------------------------------------------------------------- */
+.section {
+  padding-block: clamp(3rem, 8vh, 5.5rem);
+}
+
+.section-fond {
+  background: linear-gradient(180deg, transparent, var(--surface) 30%, var(--surface) 70%, transparent);
+  border-block: 1px solid var(--ligne);
+}
+
+.section-cta {
+  text-align: center;
+}
+
+.section-titre {
+  margin: 0 0 1.75rem;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ivoire);
+}
+
+.section-titre::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-top: 0.9rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ruby), var(--or));
+}
+
+.centre .section-titre::after {
+  margin-inline: auto;
+}
+
+.section-texte {
+  color: var(--ivoire-att);
+}
+
+.section-texte + .section-texte {
+  margin-top: 1rem;
+}
+
+/* --- Cartes services (accueil) ---------------------------------------------- */
+.grille-services {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;   /* mobile : une colonne */
+}
+
+.carte-service {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+  background-color: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+/* Fine ligne rubis en haut de carte — accent uniquement, jamais de fond massif */
+.carte-service::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto auto -1px;
+  width: 44px;
+  height: 2px;
+  border-radius: 2px 0 0 0;
+  background: var(--ruby);
+}
+
+.carte-service:hover {
+  border-color: var(--ligne-forte);
+  transform: translateY(-3px);
+}
+
+.carte-numero {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  /* rubis éclairci : le rubis pur #E0115F ne passe pas AA en petite taille
+     (4,2:1 < 4,5:1) — le rubis reste réservé aux accents décoratifs */
+  color: var(--ruby-clair);
+}
+
+.carte-titre {
+  margin: 0 0 0.6rem;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ivoire);
+}
+
+.carte-texte {
+  margin: 0 0 1rem;
+  color: var(--ivoire-att);
+  font-size: 0.98rem;
+}
+
+.carte-lien {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.carte-lien a {
+  color: var(--or-att);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.carte-lien a:hover,
+.carte-lien a:focus-visible {
+  color: var(--or);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Grille valeurs (à propos) ---------------------------------------------- */
+.grille-valeurs {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.carte-valeur {
+  padding: 1.5rem 1.4rem;
+  background-color: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+}
+
+/* --- En-tête de page (pages intérieures) ------------------------------------- */
+.entete-page {
+  padding-block: clamp(2.8rem, 7vh, 4.5rem) 0;
+  text-align: center;
+}
+
+.entete-page h1 {
+  margin: 0.5rem 0 0.6rem;
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ivoire);
+}
+
+.entete-sous-titre {
+  margin: 0 auto 0;
+  max-width: 34em;
+  color: var(--ivoire-att);
+  font-size: 1.1rem;
+}
+
+.fil {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ivoire-att);
+}
+
+/* --- Méthode (à propos) ------------------------------------------------------ */
+.liste-methode {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  counter-reset: etape;
+}
+
+.liste-methode li {
+  position: relative;
+  padding: 0 0 0 3.4rem;
+  counter-increment: etape;
+}
+
+.liste-methode li + li {
+  margin-top: 1.75rem;
+}
+
+/* Numéro d'étape : petite étoile à quatre branches en or */
+.liste-methode li::before {
+  content: counter(etape);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--ligne-forte);
+  color: var(--or-att);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.liste-methode h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ivoire);
+}
+
+.liste-methode p {
+  margin: 0;
+  color: var(--ivoire-att);
+}
+
+/* --- Listes de prestations (services) ----------------------------------------- */
+.liste-prestations {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.liste-prestations li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.6rem;
+  color: var(--ivoire-att);
+}
+
+/* Puce : petit losange or */
+.liste-prestations li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--or);
+  border-radius: 1px;
+}
+
+.liste-prestations strong {
+  color: var(--ivoire);
+  font-weight: 600;
+}
+
+.lien-texte {
+  font-weight: 600;
+}
+
+/* --- Contact ------------------------------------------------------------------- */
+.grille-contact {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+.liste-coordonnees {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.liste-coordonnees li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--ligne);
+  color: var(--ivoire-att);
+}
+
+.coordonnee-libelle {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ruby-clair);   /* accent rubis fin AA, conforme SPECS §2 */
+}
+
+.formulaire {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.6rem 1.4rem;
+  background-color: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+}
+
+.champ {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.champ label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ivoire);
+}
+
+.champ input,
+.champ select,
+.champ textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--ligne-forte);
+  background-color: rgba(10, 10, 26, 0.6);
+  color: var(--ivoire);
+  font-family: var(--sans);
+  font-size: 1rem;
+  transition: border-color var(--transition);
+}
+
+.champ input:focus,
+.champ select:focus,
+.champ textarea:focus {
+  outline: none;
+  border-color: var(--or);
+}
+
+.champ textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formulaire-aide {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ivoire-att);
+}
+
+.formulaire-aide[hidden] {
+  display: none;
+}
+
+/* --- Page 404 -------------------------------------------------------------------- */
+.section-404 {
+  padding-block: clamp(4rem, 14vh, 8rem);
+}
+
+.titre-404 {
+  margin: 0 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  font-weight: 500;
+  color: var(--ivoire);
+}
+
+/* --- Pied de page ----------------------------------------------------------------- */
+.site-footer {
+  margin-top: clamp(2rem, 6vh, 4rem);
+  border-top: 1px solid var(--ligne);
+  background: linear-gradient(180deg, transparent, rgba(32, 16, 80, 0.35));
+}
+
+.site-footer .conteneur {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 2.5rem 2rem;
+}
+
+.pied-marque {
+  margin: 0 0 0.2rem;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ivoire);
+}
+
+.pied-tagline {
+  margin: 0;
+  color: var(--ivoire-att);
+  font-size: 0.95rem;
+}
+
+.pied-liens ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+}
+
+.pied-liens a {
+  color: var(--ivoire-att);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.pied-liens a:hover,
+.pied-liens a:focus-visible {
+  color: var(--or);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pied-legal {
+  margin: 0;
+  color: var(--ivoire-att);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Responsive — mobile-first, points de rupture 640 px et 920 px
+   ========================================================================== */
+@media (min-width: 640px) {
+  .grille-services {
+    grid-template-columns: repeat(2, 1fr);  /* 2 colonnes en tablette */
+  }
+
+  .grille-services .carte-service:last-child {
+    grid-column: 1 / -1;                     /* la 3e carte s'étale */
+    max-width: none;
+  }
+
+  .liste-coordonnees li {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 920px) {
+  .grille-services {
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes en desktop */
+  }
+
+  .grille-services .carte-service:last-child {
+    grid-column: auto;
+  }
+
+  .grille-valeurs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grille-contact {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+
+  .site-footer .conteneur {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .pied-legal {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Accessibilité : mouvement réduit --------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

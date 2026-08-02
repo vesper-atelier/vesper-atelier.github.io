@@ -1,0 +1,98 @@
+---
+layout: default
+title: Accueil
+description: >-
+  Vesper Atelier — l'atelier numérique de l'étoile du soir. Sites web et
+  outils sur mesure, façonnés à la main avec précision.
+---
+
+{% comment %}--------------------------------------------------------------
+  Page Accueil — hero, pitch, trois services, appel à l'action.
+----------------------------------------------------------------{% endcomment %}
+
+<section class="hero" aria-labelledby="hero-titre">
+  <div class="conteneur">
+    <p class="hero-sur-titre" id="hero-sur-titre">
+      <svg class="etoile-deco" width="14" height="14" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 2 C34.5 21 43 29.5 62 32 C43 34.5 34.5 43 32 62 C29.5 43 21 34.5 2 32 C21 29.5 29.5 21 32 2 Z" fill="currentColor"/>
+      </svg>
+      Vesper Atelier
+    </p>
+    <h1 class="hero-titre" id="hero-titre">L'atelier numérique<br>de <em>l'étoile du soir</em></h1>
+    <p class="hero-texte">
+      Sites web et outils sur mesure, façonnés à la main — avec la précision
+      d'un artisan, la patience d'une soirée d'été. Sobres, rapides, durables.
+    </p>
+    <p class="hero-actions">
+      <a class="bouton bouton-primaire" href="{{ '/contact/' | relative_url }}">Parlons de votre projet</a>
+      <a class="bouton bouton-secondaire" href="{{ '/services/' | relative_url }}">Voir les services</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="pitch-titre">
+  <div class="conteneur conteneur-etroit">
+    <h2 class="section-titre" id="pitch-titre">Vesper, la première lumière du soir</h2>
+    <p class="section-texte">
+      Vesper est l'étoile du soir — Vénus, la première lumière qui paraît quand
+      le jour s'achève. L'atelier porte ce nom comme un programme&nbsp;: travailler
+      dans la lumière calme, prendre le temps qu'il faut, et ne livrer que des
+      choses bien faites.
+    </p>
+    <p class="section-texte">
+      Chaque site, chaque outil est une pièce unique&nbsp;: dessinée pour vous,
+      écrite ligne à ligne, pensée pour durer. Pas de template, pas de bruit —
+      juste du numérique soigné, à hauteur d'humain.
+    </p>
+  </div>
+</section>
+
+<section class="section section-services" aria-labelledby="services-titre">
+  <div class="conteneur">
+    <h2 class="section-titre centre" id="services-titre">Ce que façonne l'atelier</h2>
+    <div class="grille-services">
+
+      <article class="carte-service">
+        <p class="carte-numero" aria-hidden="true">01</p>
+        <h3 class="carte-titre">Sites sur mesure</h3>
+        <p class="carte-texte">
+          Sites vitrines, portfolios, pages de lancement — conçus sur mesure,
+          légers et rapides, accessibles à toutes et tous.
+        </p>
+        <p class="carte-lien"><a href="{{ '/services/' | relative_url }}#sites-sur-mesure">En savoir plus</a></p>
+      </article>
+
+      <article class="carte-service">
+        <p class="carte-numero" aria-hidden="true">02</p>
+        <h3 class="carte-titre">Outils d'automatisation</h3>
+        <p class="carte-texte">
+          Scripts, intégrations, petits outils qui allègent votre quotidien&nbsp;:
+          moins de tâches répétitives, plus de temps pour l'essentiel.
+        </p>
+        <p class="carte-lien"><a href="{{ '/services/' | relative_url }}#outils-automatisation">En savoir plus</a></p>
+      </article>
+
+      <article class="carte-service">
+        <p class="carte-numero" aria-hidden="true">03</p>
+        <h3 class="carte-titre">Projets créatifs</h3>
+        <p class="carte-texte">
+          Expérimentations web, installations, collaborations — l'atelier aime
+          les projets où la technique se met au service de la poésie.
+        </p>
+        <p class="carte-lien"><a href="{{ '/services/' | relative_url }}#projets-creatifs">En savoir plus</a></p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-cta" aria-labelledby="cta-titre">
+  <div class="conteneur conteneur-etroit centre">
+    <h2 class="section-titre" id="cta-titre">Une idée, une envie, un projet&nbsp;?</h2>
+    <p class="section-texte">
+      Écrivez-moi quelques lignes — je réponds avec le même soin que je mets
+      à façonner chaque pièce.
+    </p>
+    <p><a class="bouton bouton-primaire" href="{{ '/contact/' | relative_url }}">Écrire à l'atelier</a></p>
+  </div>
+</section>
